@@ -3,8 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Tempest' });
- /* res.send(
+  //res.render('index', { title: 'Tempest' });
+ res.send(
     {
       data: {
         user: 'my_user',
@@ -16,11 +16,12 @@ router.get('/', function(req, res, next) {
         page: 32,
       },
     }
-  );*/
+  );
 });
 
-router.get('/user', function(req, res, next) {
-  res.send(
+router.get('/user', (req, res, next) => {
+  res.statusCode=201;
+    res.send(
     {
       data: {
         user: 'my_user',
