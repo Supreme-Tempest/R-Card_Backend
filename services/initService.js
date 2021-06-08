@@ -58,6 +58,7 @@ function initSequelize() {
 
 function syncTables() {
     var order = [
+        'roles',
         'user',
         'verificationToken'
     ];

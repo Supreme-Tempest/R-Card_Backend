@@ -22,7 +22,11 @@ const User  = sequelize.define('users', {
         type: DataTypes.BOOLEAN
     },
     role: {
-        type: DataTypes.STRING,
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onUpdate: "cascade",
+        onDelete: "cascade",
+        references: { model: "roles", key: "id" }
     },
     lastlogin: {
         type: DataTypes.DATE

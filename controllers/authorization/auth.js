@@ -5,7 +5,7 @@ const User = require('../../models/user');
 const cryptoRandomString = require('crypto-random-string');
 const VerificationToken = require('../../models/verificationToken');
 //const verificationService = require('../../services/verificationService');
-const Roles = require('../../models/roles');
+const Roles = require('../../tools/roles');
 
 async function validateToken(user) {
     console.log('aqui validado token');
@@ -47,7 +47,7 @@ module.exports = function (app) {
             //password encryption
             password = bcrypt.hashSync(password, 10);
             //user creation
-            const user = await User.create({ username: username, password: password, email: email, role: Roles.USER });
+            const user = await User.create({ username: username, password: password, email: email, role: 2 });
             //verification code generation
             const verificationToken = await VerificationToken.create({ username: user.dataValues.username, token: cryptoRandomString({ length: 20, type: 'url-safe' }), createdat: new Date(), updatedat: new Date() })
             //jwt token 
