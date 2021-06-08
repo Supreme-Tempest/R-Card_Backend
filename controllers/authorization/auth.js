@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
 const cryptoRandomString = require('crypto-random-string');
 const VerificationToken = require('../../models/verificationToken');
-const verificationService = require('../../services/verificationService');
+//const verificationService = require('../../services/verificationService');
+const Roles = require('../../models/roles');
 
 async function validateToken(user) {
     console.log('aqui validado token');
@@ -28,6 +29,7 @@ async function validateToken(user) {
                     title: 'Successfully logged in',
                     token: token,
                     username: user.username,
+                    role: user.role,
                     firstname: user.firstname,
                 }));
             }
@@ -45,13 +47,13 @@ module.exports = function (app) {
             //password encryption
             password = bcrypt.hashSync(password, 10);
             //user creation
-            const user = await User.create({ username: username, password: password, email: email });
+            const user = await User.create({ username: username, password: password, email: email, role: Roles.USER });
             //verification code generation
             const verificationToken = await VerificationToken.create({ username: user.dataValues.username, token: cryptoRandomString({ length: 20, type: 'url-safe' }), createdat: new Date(), updatedat: new Date() })
             //jwt token 
             let jwtTokenEmailVerify = jwt.sign({ email: user.dataValues.email }, 'secret', { expiresIn: "1h" });
             //sending verificaiton email
-            await verificationService.sendVerificationEmail(user.dataValues.email, verificationToken.dataValues.token, jwtTokenEmailVerify)
+            //await verificationService.sendVerificationEmail(user.dataValues.email, verificationToken.dataValues.token, jwtTokenEmailVerify)
 
             return res.status(200).send(`You have Registered Successfully, Activation link sent to: ${user.dataValues.email}`)
 

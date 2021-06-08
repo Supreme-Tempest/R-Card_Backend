@@ -27,7 +27,7 @@ const pool = new Pool({
     port: process.env.POSTGRES_PORT
 });
 
-const transporter = nodeMailer.createTransport({
+/*const transporter = nodeMailer.createTransport({
     host: "smtp-mail.outlook.com", // hostname
     secureConnection: false, // TLS requires secureConnection to be false
     port: 587, // port for secure SMTP
@@ -39,7 +39,7 @@ const transporter = nodeMailer.createTransport({
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD
     }
-});
+});*/
 
 function initSequelize() {
 

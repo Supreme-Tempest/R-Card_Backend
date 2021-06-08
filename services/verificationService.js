@@ -6,8 +6,8 @@ const transporter = nodeMailer.createTransport({
     secureConnection: false, // TLS requires secureConnection to be false
     port: 587, // port for secure SMTP
     tls: {
-       ciphers:'SSLv3',
-       rejectUnauthorized: false
+        ciphers:'SSLv3',
+        rejectUnauthorized: false
     },
     auth: {
         user: process.env.EMAIL_USER,

@@ -3,7 +3,6 @@ const DataTypes = Sequelize.DataTypes;
 const { sequelize } = require('../services/initService');
 const VerificationToken = require('./verificationToken');
 
-
 const User  = sequelize.define('users', {
     username: {
         type: DataTypes.STRING,
@@ -21,6 +20,9 @@ const User  = sequelize.define('users', {
     },
     isVerified: {
         type: DataTypes.BOOLEAN
+    },
+    role: {
+        type: DataTypes.STRING,
     },
     lastlogin: {
         type: DataTypes.DATE
