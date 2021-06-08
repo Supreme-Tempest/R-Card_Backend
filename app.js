@@ -1,13 +1,53 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+let pgtools = require('pgtools');
+const middleware = require('./middleware');
+const { initSequelize } = require('./services/initService');
+const authController = require('./controllers/authorization/auth');
+const verificationController = require('./controllers/authorization/verification');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+middleware(app);
+authController(app);
+verificationController(app);
+
+const config = {
+  user: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  port: process.env.POSTGRES_PORT,
+  host: process.env.POSTGRES_HOST
+}
+
+console.log(`User: ${process.env.POSTGRES_USER}`);
+console.log(`Password: ${process.env.POSTGRES_PASSWORD}`);
+console.log(`Host: ${process.env.POSTGRES_HOST}`);
+console.log(`Port: ${process.env.POSTGRES_PORT}`);
+console.log(`DB: ${process.env.POSTGRES_DATABASE}`);
+
+pgtools.createdb(config, process.env.POSTGRES_DATABASE, function (err, res) {
+  if (err) {
+      if(err.name === 'duplicate_database'){
+          console.log('Database already exists');
+      }
+      else{
+          console.log(err);
+      }
+  }
+  else {
+      console.log('Database has been created successfully!');
+  }
+
+  initSequelize();
+
+});
 
 // view engine setup
 app.set('views', path.join('../R-card FrontEnd/', 'views'));
@@ -19,7 +59,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join('../R-card FrontEnd/', 'public')));
 
-app.use('/', indexRouter);
+app.use('/api/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
