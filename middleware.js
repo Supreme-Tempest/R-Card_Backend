@@ -12,15 +12,23 @@ module.exports = function (app) {
             next();
             return;
         }
-        console.log(req.headers);
+        //console.log(req.headers);
 
         let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
-        if (token.startsWith('Bearer ')) {
-            // Remove Bearer from string
-            token = token.slice(7, token.length);
-        }
+
+        //console.log('manda token: ', 'no');
 
         if (token) {
+            if (token.startsWith('Bearer ')) {
+                // Remove Bearer from string
+                token = token.slice(7, token.length);
+            } else {
+                return res.json({
+                    success: false,
+                    message: 'Auth Bearer token is not supplied'
+                });
+            }
+
             jwt.verify(token, "secret", (err, decoded) => {
                 if (err) {
                     return res.json({
