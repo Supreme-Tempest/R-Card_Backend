@@ -66,6 +66,7 @@ module.exports = function (app) {
 
 
     app.post('/auth/v1/login', async function (req, res) {
+        console.log('login: ', req.body);
         try {
             const { username, password } = req.body;
             //console.log(username, password);
