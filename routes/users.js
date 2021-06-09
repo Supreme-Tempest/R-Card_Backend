@@ -13,7 +13,7 @@ router.get('/user', function(req, res, next) {
       meta: {
         size: 99,
         page: 99,
-      },
+      }, 
     }
   );
 });
