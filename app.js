@@ -8,7 +8,6 @@ let pgtools = require('pgtools');
 const middleware = require('./middleware');
 const { initSequelize } = require('./services/initService');
 const authController = require('./controllers/authorization/auth');
-const verificationController = require('./controllers/authorization/verification');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -17,7 +16,6 @@ var app = express();
 
 middleware(app);
 authController(app);
-verificationController(app);
 
 const config = {
   user: process.env.POSTGRES_USER,

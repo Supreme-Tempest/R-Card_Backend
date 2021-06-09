@@ -8,7 +8,7 @@ const VerificationToken = require('../../models/verificationToken');
 const Roles = require('../../tools/roles');
 
 async function validateToken(user) {
-    console.log('aqui validado token');
+    //console.log('aqui validado token');
 
     return new Promise((resolve, reject) => {
         let token = jwt.sign({ user: user }, 'secret', { expiresIn: 50000 });//TOKEN DB EXPIRED 50000
@@ -18,7 +18,7 @@ async function validateToken(user) {
                                 WHERE username = ($2)`;
 
         pool.query(updateLastLogin, [new Date(), user.username], function (err, results) {
-            console.log('aqui en la query del usuario');
+            //console.log('aqui en la query del usuario');
             if (err) {
                 console.log('error', err);
                 reject('An Error has occured, please try again');
