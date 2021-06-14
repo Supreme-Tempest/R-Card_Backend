@@ -25,15 +25,17 @@ module.exports = function (app) {
             } else {
                 return res.json({
                     success: false,
+                    code: 401,
                     message: 'Auth Bearer token is not supplied'
                 });
             }
 
-            jwt.verify(token, "secret", (err, decoded) => {
+            jwt.verify(token, "RCardSecret", (err, decoded) => {
                 if (err) {
                     return res.json({
                         success: false,
-                        message: 'Token is not valid'
+                        code: 4012,
+                        message: 'Token is not valid or expired'
                     });
                 } else {
                     req.decoded = decoded;
@@ -43,6 +45,7 @@ module.exports = function (app) {
         } else {
             return res.json({
                 success: false,
+                code: 401,
                 message: 'Auth token is not supplied'
             });
         }

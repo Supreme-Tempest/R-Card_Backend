@@ -11,7 +11,7 @@ async function validateToken(user) {
     //console.log('aqui validado token');
 
     return new Promise((resolve, reject) => {
-        let token = jwt.sign({ user: user }, 'secret', { expiresIn: 50000 });//TOKEN DB EXPIRED 50000
+        let token = jwt.sign({ user: user }, 'RCardSecret', { expiresIn: 50000 });//TOKEN DB EXPIRED 50000
 
         let updateLastLogin = `UPDATE users
                                 SET lastLogin = ($1)
@@ -51,7 +51,7 @@ module.exports = function (app) {
             //verification code generation
             const verificationToken = await VerificationToken.create({ username: user.dataValues.username, token: cryptoRandomString({ length: 20, type: 'url-safe' }), createdat: new Date(), updatedat: new Date() })
             //jwt token 
-            let jwtTokenEmailVerify = jwt.sign({ email: user.dataValues.email }, 'secret', { expiresIn: "1h" });
+            let jwtTokenEmailVerify = jwt.sign({ email: user.dataValues.email }, 'RCardSecret', { expiresIn: "1h" });
             //sending verificaiton email
             //await verificationService.sendVerificationEmail(user.dataValues.email, verificationToken.dataValues.token, jwtTokenEmailVerify)
 
