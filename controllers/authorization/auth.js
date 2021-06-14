@@ -59,8 +59,8 @@ module.exports = function (app) {
             return res.status(200).send(`You have Registered Successfully, Activation link sent to: ${user.dataValues.email}`)
 
         } catch (err) {
-            console.log("err1 ", err)
-            return res.status(500);
+            console.log("err1 ", err.code);
+            return res.status(500).send(err);
         }
     })
 
@@ -88,7 +88,7 @@ module.exports = function (app) {
             }
         } catch (err) {
             console.log('register: ', err.code);
-            return res.status(500).send((err.title));
+            return res.status(500).send(err);
 
         }
     });
