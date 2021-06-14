@@ -27,6 +27,7 @@ async function validateToken(user) {
                 console.log('resolve', 'success loged');
                 resolve(JSON.stringify({
                     title: 'Successfully logged in',
+                    status: 'ok',
                     token: token,
                     username: user.username,
                     role: user.role,
@@ -86,6 +87,7 @@ module.exports = function (app) {
                 }
             }
         } catch (err) {
+            console.log('register: ', err.code);
             return res.status(500).send((err.title));
 
         }
