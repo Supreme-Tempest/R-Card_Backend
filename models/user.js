@@ -7,7 +7,11 @@ const User  = sequelize.define('users', {
     username: {
         type: DataTypes.STRING,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        unique: {
+            args: true,
+            msg: {code: 40145, msg: 'usuario ya existe'},
+        }
     },
     password: {
         type: DataTypes.STRING,
@@ -16,7 +20,10 @@ const User  = sequelize.define('users', {
     email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique:   {
+            args: true,
+            msg: {code: 40146, msg: 'email ya registrado'},
+        },
     },
     isVerified: {
         type: DataTypes.BOOLEAN
