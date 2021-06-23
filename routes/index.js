@@ -36,4 +36,23 @@ router.get('/user', (req, res, next) => {
   );
 });
 
+router.get('/testGet', (req, res, next) => {
+  res.statusCode=201;
+    res.send(
+    {
+      data: {
+        user: 'my_user',
+        method: 'get',
+        owner: 'testGet',
+        title: 'main page',
+        size: 99,
+      },
+      meta: {
+        size: 99,
+        page: 99,
+      },
+    }
+  );
+});
+
 module.exports = router;
