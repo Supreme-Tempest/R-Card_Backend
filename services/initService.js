@@ -58,15 +58,16 @@ function initSequelize() {
 
 function syncTables() {
     var order = [
-        'departments',
-        'municipios',
-        'workshops',
-        'roles',
-        'users',
-        'verificationToken'
+        'department',
+        'role',
+        'municipio',
+        'workshop',
+        'user',
+        'verificationToken',
     ];
 
     async.eachSeries(order, function (file, callback) {
+        //console.log(file);
         models[file] = require(`../models/${file}`)
         models[file]
             .sync()
@@ -76,6 +77,7 @@ function syncTables() {
                 callback();
 
             }).catch((err) => {
+                console.log(err);
             });
     });
 }

@@ -6,4 +6,7 @@ insert into roles (name, createdAt, updatedAt)
 	values ('admin', current_date, current_date);
 	
 insert into roles (name, createdAt, updatedAt) 
-	values ('user', current_date, current_date);
+	values ('manager', current_date, current_date);
+
+insert into roles (name, createdAt, updatedAt) 
+	values ('seller', current_date, current_date);

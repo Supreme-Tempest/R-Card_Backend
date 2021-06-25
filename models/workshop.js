@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 const { sequelize } = require('../services/initService');
+const user = require('./user');
 
 const Workshop  = sequelize.define('workshops', {
     id: {
@@ -23,6 +24,6 @@ const Workshop  = sequelize.define('workshops', {
     }
 }, { timestamps: false });
 
-Workshop.hasOne(user, { as: 'users',foreignKey: 'workshop', foreignKeyConstraint: true });
+Workshop.hasMany(user, { as: 'users',foreignKey: 'workshop', foreignKeyConstraint: true });
 
 module.exports = Workshop;
