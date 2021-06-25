@@ -15,11 +15,11 @@ const Department  = sequelize.define('departments', {
         allowNull: false,
         unique: {
             args: true,
-            msg: {code: 40145, msg: 'usuario ya existe'},
+            msg: {code: 40145, msg: 'departamento ya existe'},
         }
     }
-});
+},{ timestamps: false });
 
 Department.hasMany(municipio, { as: 'municipios',foreignKey: 'department', foreignKeyConstraint: true });
 
-module.exports = Department;
+module.exports = Department; 
