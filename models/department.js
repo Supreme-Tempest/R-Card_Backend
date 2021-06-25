@@ -16,7 +16,7 @@ const Department  = sequelize.define('departments', {
         primaryKey: true,
         unique: {
             args: true,
-            msg: {code: 40145, msg: 'usuario ya existe'},
+            msg: {code: 40145, msg: 'departamento ya existe'},
         }
     }
 });
