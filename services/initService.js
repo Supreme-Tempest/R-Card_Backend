@@ -58,11 +58,11 @@ function initSequelize() {
 
 function syncTables() {
     var order = [
-        'departments',
-        'municipios',
-        'workshops',
+        'department',
         'roles',
-        'users',
+        'municipio',
+        'workshop',
+        'users', 
         'verificationToken'
     ];
 
