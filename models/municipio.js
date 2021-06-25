@@ -1,9 +1,8 @@
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 const { sequelize } = require('../services/initService');
-const user = require('./user');
 
-const Role  = sequelize.define('roles', {
+const Municipio  = sequelize.define('municipios', {
     id: {
         allowNull: false,
         autoIncrement: true,
@@ -15,16 +14,15 @@ const Role  = sequelize.define('roles', {
         allowNull: false,
         unique: true
     },
-    createdat: {
+    department: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        type: Sequelize.DATE
-    },
-    updatedat: {
-        allowNull: false,
-        type: Sequelize.DATE
+        onUpdate: "cascade",
+        onDelete: "cascade",
+        references: { model: "departments", key: "id" }
     }
 }, { timestamps: false });
 
-Role.hasOne(user, { as: 'users',foreignKey: 'role', foreignKeyConstraint: true });
+Municipio.hasOne(workshop, { as: 'workshops',foreignKey: 'municipio', foreignKeyConstraint: true });
 
-module.exports = Role;
+module.exports = Municipio;
