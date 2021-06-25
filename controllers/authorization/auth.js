@@ -11,7 +11,7 @@ async function validateToken(user) {
     //console.log('aqui validado token');
 
     return new Promise((resolve, reject) => {
-        let token = jwt.sign({ user: user }, 'RCardSecret', { expiresIn: 50000 });//TOKEN DB EXPIRED 50000
+        let token = jwt.sign({ user: user }, process.env.TOKEN_KEY, { expiresIn: 50000 });//TOKEN DB EXPIRED 50000
 
         let updateLastLogin = `UPDATE users
                                 SET lastLogin = ($1)
@@ -31,6 +31,7 @@ async function validateToken(user) {
                     token: token,
                     username: user.username,
                     role: user.role,
+                    name: user.name,
                     firstname: user.firstname,
                 }));
             }
@@ -44,19 +45,33 @@ module.exports = function (app) {
     app.post('/auth/v1/register', async function (req, res) {
         console.log("register ,", req.body);
         try {
-            let { username, password, email } = req.body;
+            let { username, password, workshop, role, name, lastname } = req.body;
             //password encryption
             password = bcrypt.hashSync(password, 10);
             //user creation
-            const user = await User.create({ username: username, password: password, email: email, role: 2 });
+            const user = await User.create(
+                { 
+                    username: username,
+                    password: password, 
+                    workshop: workshop, 
+                    name: name,
+                    lastname: lastname,
+                    role: role,
+                    active: true,
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                },
+            );
             //verification code generation
-            const verificationToken = await VerificationToken.create({ username: user.dataValues.username, token: cryptoRandomString({ length: 20, type: 'url-safe' }), createdat: new Date(), updatedat: new Date() })
-            //jwt token 
-            let jwtTokenEmailVerify = jwt.sign({ email: user.dataValues.email }, 'RCardSecret', { expiresIn: "1h" });
-            //sending verificaiton email
-            //await verificationService.sendVerificationEmail(user.dataValues.email, verificationToken.dataValues.token, jwtTokenEmailVerify)
-
-            return res.status(200).send(`You have Registered Successfully, Activation link sent to: ${user.dataValues.email}`)
+            const verificationToken = await VerificationToken.create(
+                { 
+                    username: user.dataValues.username, 
+                    token: cryptoRandomString({ length: 20, type: 'url-safe' }), 
+                    createdat: new Date(),
+                    updatedat: new Date(),
+                },
+            )
+            return res.status(200).send(`You have Registered Successfully`)
 
         } catch (err) {
             console.log("err1 ", err.errors);
@@ -83,7 +98,14 @@ module.exports = function (app) {
                 else {
                     console.log('validando token');
                     const data = await validateToken(results.dataValues);
-                    return res.status(200).send(data);
+                    if (data.active) {
+                        return res.status(200).send(data);
+                    } else {
+                        return res.status(5001).send({
+                            message: "usuario no se encuentra activo",
+                        });
+                    }
+                    
                 }
             }
         } catch (err) {

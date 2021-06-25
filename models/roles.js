@@ -15,16 +15,8 @@ const Role  = sequelize.define('roles', {
         allowNull: false,
         unique: true
     },
-    createdat: {
-        allowNull: false,
-        type: Sequelize.DATE
-    },
-    updatedat: {
-        allowNull: false,
-        type: Sequelize.DATE
-    }
 }, { timestamps: false });
 
-Role.hasOne(user, { as: 'users',foreignKey: 'id', foreignKeyConstraint: true });
+Role.hasOne(user, { as: 'users',foreignKey: 'role', foreignKeyConstraint: true });
 
 module.exports = Role;

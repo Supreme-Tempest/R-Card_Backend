@@ -17,15 +17,22 @@ const User  = sequelize.define('users', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    email: {
+    name: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique:   {
-            args: true,
-            msg: {code: 40146, msg: 'email ya registrado'},
-        },
+        allowNull: false
     },
-    isVerified: {
+    lastname: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    workshop: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onUpdate: "cascade",
+        onDelete: "cascade",
+        references: { model: "workshops", key: "id" }
+    },
+    active: {
         type: DataTypes.BOOLEAN
     },
     role: {
