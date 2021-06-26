@@ -12,6 +12,13 @@ const Identificative  = sequelize.define('identificatives', {
     name: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    tipeproduct: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onUpdate: "cascade",
+        onDelete: "cascade",
+        references: { model: "tipeproducts", key: "id" }
     }
 },{ timestamps: false });
 
