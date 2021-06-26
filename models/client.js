@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 const { sequelize } = require('../services/initService');
 
-const Client  = sequelize.define('clients', {
+const Client = sequelize.define('clients', {
     number_card: {
         allowNull: false,
         primaryKey: true,
@@ -17,7 +17,7 @@ const Client  = sequelize.define('clients', {
         allowNull: false,
         unique: {
             args: true,
-            msg: {code: 40145, msg: 'client ya existe'},
+            msg: { code: 40145, msg: 'client ya existe' },
         }
     },
     creation_date: {
@@ -30,9 +30,9 @@ const Client  = sequelize.define('clients', {
     },
     state: {
         allowNull: false,
-        type:DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN
     }
-},{ timestamps: false });
+}, { timestamps: false });
 
 
-module.exports = Client; 
+module.exports = Client;
