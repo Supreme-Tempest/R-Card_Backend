@@ -1,9 +1,8 @@
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 const { sequelize } = require('../services/initService');
-const workshop = require('./workshop');
 
-const Municipio  = sequelize.define('municipios', {
+const Product  = sequelize.define('products', {
     id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,17 +11,27 @@ const Municipio  = sequelize.define('municipios', {
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
     },
-    department: {
+    brand: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    stock: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    price: {
+        type: Sequelize.DOUBLE,
+        allowNull: false
+    },
+    tipeproduct: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onUpdate: "cascade",
         onDelete: "cascade",
-        references: { model: "departments", key: "id" }
+        references: { model: "tipeproducts", key: "id" }
     }
-}, { timestamps: false });
+},{ timestamps: false });
 
-Municipio.hasMany(workshop, { as: 'workshops', foreignKey: 'id', foreignKeyConstraint: true });
-
-module.exports = Municipio;
+module.exports = Product; 
