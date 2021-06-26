@@ -23,6 +23,6 @@ const Municipio  = sequelize.define('municipios', {
     }
 }, { timestamps: false });
 
-Municipio.hasMany(workshop, { as: 'workshops', foreignKey: 'id', foreignKeyConstraint: true });
+Municipio.hasMany(workshop, { as: 'workshops', foreignKey: 'municipio', foreignKeyConstraint: true });
 
 module.exports = Municipio;

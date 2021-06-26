@@ -17,7 +17,7 @@ const TipeProduct  = sequelize.define('tipeproducts', {
     }
 }, { timestamps: false });
 
-TipeProduct.hasMany(product, { as: 'products', foreignKey: 'id', foreignKeyConstraint: true });
+TipeProduct.hasMany(product, { as: 'products', foreignKey: 'tipeproduct', foreignKeyConstraint: true });
 TipeProduct.hasMany(identificative, { as: 'indetificatives', foreignKey: 'id', foreignKeyConstraint: true });
 
 module.exports = TipeProduct;

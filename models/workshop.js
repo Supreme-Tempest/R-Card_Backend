@@ -24,6 +24,6 @@ const Workshop  = sequelize.define('workshops', {
     }
 }, { timestamps: false });
 
-Workshop.hasMany(user, { as: 'users',foreignKey: 'username', foreignKeyConstraint: true });
+Workshop.hasMany(user, { as: 'users',foreignKey: 'workshop', foreignKeyConstraint: true });
 
 module.exports = Workshop;

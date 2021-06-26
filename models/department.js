@@ -20,6 +20,6 @@ const Department  = sequelize.define('departments', {
     }
 },{ timestamps: false });
 
-Department.hasMany(municipio, { as: 'municipios',foreignKey: 'id', foreignKeyConstraint: true });
+Department.hasMany(municipio, { as: 'municipios',foreignKey: 'department', foreignKeyConstraint: true });
 
 module.exports = Department; 
