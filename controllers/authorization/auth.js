@@ -33,7 +33,7 @@ async function validateToken(user) {
                     username: user.username,
                     role: user.role,
                     name: user.name,
-                    firstname: user.firstname,
+                    lastname: user.lastname
                 }));
             }
 
@@ -50,20 +50,22 @@ module.exports = function (app) {
             //password encryption
             password = bcrypt.hashSync(password, 10);
             //user creation
+            console.log('register', 'preparacion de creacion');
             const user = await User.create(
                 { 
                     username: username,
                     password: password, 
-                    workshop: workshop, 
                     name: name,
                     lastname: lastname,
-                    role: role,
+                    workshop: workshop, 
                     active: true,
+                    role: role,
                     createdAt: new Date(),
                     updatedAt: new Date(),
                 },
             );
             //verification code generation
+            console.log('register', 'usuario guardado');
             const verificationToken = await VerificationToken.create(
                 { 
                     username: user.dataValues.username, 
