@@ -18,8 +18,8 @@ const Department  = sequelize.define('departments', {
             msg: {code: 40145, msg: 'departamento ya existe'},
         }
     }
-});
+},{ timestamps: false });
 
 Department.hasMany(municipio, { as: 'municipios',foreignKey: 'department', foreignKeyConstraint: true });
 
-module.exports = Department;
+module.exports = Department; 
