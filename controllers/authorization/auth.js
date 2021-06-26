@@ -6,12 +6,13 @@ const cryptoRandomString = require('crypto-random-string');
 const VerificationToken = require('../../models/verificationToken');
 //const verificationService = require('../../services/verificationService');
 const Roles = require('../../tools/roles');
+const tokenkey =  process.env.TOKEN_KEY;
 
 async function validateToken(user) {
     //console.log('aqui validado token');
 
     return new Promise((resolve, reject) => {
-        let token = jwt.sign({ user: user }, process.env.TOKEN_KEY, { expiresIn: 50000 });//TOKEN DB EXPIRED 50000
+        let token = jwt.sign({ user: user }, tokenkey, { expiresIn: 50000 });//TOKEN DB EXPIRED 50000
 
         let updateLastLogin = `UPDATE users
                                 SET lastLogin = ($1)
