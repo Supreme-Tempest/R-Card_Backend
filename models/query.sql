@@ -157,7 +157,7 @@ insert into municipios (department,name)values (7, 'Talnique');
 insert into municipios (department,name)values (7, 'Tamanique');
 insert into municipios (department,name)values (7, 'Teotepeque');
 insert into municipios (department,name)values (7, 'Tepecoyo');
-insert into municipios (department,name)values (7, ' Zaragoza');
+insert into municipios (department,name)values (7, 'Zaragoza');
 insert into municipios (department,name)values (8, 'Apastepeque');
 insert into municipios (department,name)values (8, 'Guadalupe');
 insert into municipios (department,name)values (8, 'San Cayetano Istepeque');
@@ -289,4 +289,3 @@ insert into municipios (department,name)values (14, 'San José');
 insert into municipios (department,name)values (14, 'Santa Rosa de Lima');
 insert into municipios (department,name)values (14, 'Yayantique');
 insert into municipios (department,name)values (14, 'Yucuaiquín');
-
