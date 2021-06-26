@@ -1,9 +1,8 @@
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 const { sequelize } = require('../services/initService');
-const municipio = require('./municipio');
 
-const Department  = sequelize.define('departments', {
+const Identificative  = sequelize.define('identificatives', {
     id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,13 +12,7 @@ const Department  = sequelize.define('departments', {
     name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: {
-            args: true,
-            msg: {code: 40145, msg: 'departamento ya existe'},
-        }
     }
 },{ timestamps: false });
 
-Department.hasMany(municipio, { as: 'municipios',foreignKey: 'id', foreignKeyConstraint: true });
-
-module.exports = Department; 
+module.exports = Identificative; 
