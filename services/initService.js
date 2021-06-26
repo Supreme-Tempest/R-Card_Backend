@@ -64,6 +64,7 @@ function syncTables() {
         'workshop',
         'user',
         'verificationToken',
+        'client',
     ];
 
     async.eachSeries(order, function (file, callback) {
