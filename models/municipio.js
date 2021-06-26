@@ -13,7 +13,6 @@ const Municipio  = sequelize.define('municipios', {
     name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
     },
     department: {
         type: Sequelize.INTEGER,
