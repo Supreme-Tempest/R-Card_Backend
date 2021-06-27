@@ -12,6 +12,7 @@ const userController = require('./controllers/users/users');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const workshopRouter = require('./routes/workshops')
 
 var app = express();
 
@@ -61,6 +62,7 @@ app.use(express.static(path.join('../R-card FrontEnd/', 'public')));
 
 app.use('/api/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/workshop', workshopRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
