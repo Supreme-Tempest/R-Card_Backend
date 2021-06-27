@@ -25,12 +25,12 @@ const Product  = sequelize.define('products', {
         type: Sequelize.DOUBLE,
         allowNull: false
     },
-    tipeproduct: {
+    productType: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onUpdate: "cascade",
         onDelete: "cascade",
-        references: { model: "tipeproducts", key: "id" }
+        references: { model: "productTypes", key: "id" }
     }
 },{ timestamps: false });
 

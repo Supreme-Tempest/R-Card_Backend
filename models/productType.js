@@ -4,7 +4,7 @@ const { sequelize } = require('../services/initService');
 const product = require('./product');
 const identificative = require('./identificative');
 
-const TipeProduct  = sequelize.define('tipeproducts', {
+const ProductType  = sequelize.define('productTypes', {
     id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,7 +17,7 @@ const TipeProduct  = sequelize.define('tipeproducts', {
     }
 }, { timestamps: false });
 
-TipeProduct.hasMany(product, { as: 'products', foreignKey: 'tipeproduct', foreignKeyConstraint: true });
-TipeProduct.hasMany(identificative, { as: 'indetificatives', foreignKey: 'tipeproduct', foreignKeyConstraint: true });
+ProductType.hasMany(product, { as: 'products', foreignKey: 'productType', foreignKeyConstraint: true });
+ProductType.hasMany(identificative, { as: 'indetificatives', foreignKey: 'productType', foreignKeyConstraint: true });
 
-module.exports = TipeProduct;
+module.exports = ProductType;

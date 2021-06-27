@@ -65,8 +65,8 @@ function syncTables() {
         'user',
         'verificationToken',
         'client',
+        'productType',
         'identificative',
-        'tipeproduct',
         'product'
     ];
 
