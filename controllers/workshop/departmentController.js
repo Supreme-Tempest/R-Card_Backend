@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const pool = require('../../services/initService').pool;
 const jwt = require('jsonwebtoken');
 const department = require('../../models/department');
+const Municipio = require('../../models/municipio');
 
 
 const deparmentGetAll = (req, res) => {

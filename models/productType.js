@@ -4,7 +4,7 @@ const { sequelize } = require('../services/initService');
 const product = require('./product');
 const identificative = require('./identificative');
 
-const ProductType  = sequelize.define('productTypes', {
+const ProductType  = sequelize.define('product_types', {
     id: {
         allowNull: false,
         autoIncrement: true,

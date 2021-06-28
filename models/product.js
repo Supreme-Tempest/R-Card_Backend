@@ -30,7 +30,7 @@ const Product  = sequelize.define('products', {
         allowNull: false,
         onUpdate: "cascade",
         onDelete: "cascade",
-        references: { model: "productTypes", key: "id" }
+        references: { model: "product_types", key: "id" }
     }
 },{ timestamps: false });
 
