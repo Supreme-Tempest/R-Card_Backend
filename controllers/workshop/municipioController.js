@@ -24,7 +24,7 @@ const municipioGetByDepartment = (department, req, res) => {
     try {
         municipio.findAll({
             //where: { department: department }, 
-            include: Department,
+            //include: Department,
         })
         .then((result)=>{
             //const data = results.dataValues;

@@ -18,12 +18,13 @@ const Municipio  = sequelize.define('municipios', {
     department: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        onUpdate: "cascade",
-        onDelete: "cascade",
-        references: { model: "departments", key: "id" }
+        //onUpdate: "cascade",
+        //onDelete: "cascade",
+        //references: { model: "departments", key: "id" }
     }
 }, { timestamps: false });
 
+//Municipio.hasOne(department, {as: 'department', foreignKey: 'department', targetKey: 'department'} );
 Municipio.hasMany(workshop, { as: 'workshops', foreignKey: 'municipio', foreignKeyConstraint: true });
 
 module.exports = Municipio;
