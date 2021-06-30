@@ -33,7 +33,7 @@ const pool = new Pool({
     port: 587, // port for secure SMTP
     tls: {
         ciphers: 'SSLv3',
-        rejectUnauthorized: false
+        rejectUnauthorized: false1
     },
     auth: {
         user: process.env.EMAIL_USER,
@@ -58,16 +58,16 @@ function initSequelize() {
 
 function syncTables() {
     var order = [
-        'department',
-        'role',
-        'municipio',
-        'workshop',
-        'user',
-        'verificationToken',
-        'client',
-        'productType',
-        'identificative',
-        'product'
+        'workshop/department',
+        'users/role',
+        'workshop/municipio',
+        'workshop/workshop',
+        'users/user',
+        'users/verificationToken',
+        'client/client',
+        'product/productType',
+        'product/identificative',
+        'product/product'
     ];
 
     async.eachSeries(order, function (file, callback) {

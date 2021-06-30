@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { sequelize } = require('../services/initService');
+const { sequelize } = require('../../services/initService');
 
 const VerificationToken = sequelize.define('verification_tokens', {
   id: {

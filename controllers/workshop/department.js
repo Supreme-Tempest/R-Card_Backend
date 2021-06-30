@@ -1,11 +1,7 @@
-const bcrypt = require('bcryptjs');
-const pool = require('../../services/initService').pool;
-const jwt = require('jsonwebtoken');
-const department = require('../../models/department');
-const Municipio = require('../../models/municipio');
+const department = require('../../models/wokshop/department');
 
 
-const deparmentGetAll = (req, res) => {
+const getAll = (req, res) => {
     console.log('departments: ', req.body);
     try {
         department.findAll()
@@ -23,5 +19,5 @@ const deparmentGetAll = (req, res) => {
 };
 
 module.exports = {
-    deparmentGetAll: deparmentGetAll,
+    getAll: getAll,
 };
