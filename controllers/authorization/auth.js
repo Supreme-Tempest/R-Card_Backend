@@ -6,12 +6,13 @@ const cryptoRandomString = require('crypto-random-string');
 const VerificationToken = require('../../models/verificationToken');
 //const verificationService = require('../../services/verificationService');
 const Roles = require('../../tools/roles');
+const tokenkey =  process.env.TOKEN_KEY;
 
 async function validateToken(user) {
     //console.log('aqui validado token');
 
     return new Promise((resolve, reject) => {
-        let token = jwt.sign({ user: user }, process.env.TOKEN_KEY, { expiresIn: 50000 });//TOKEN DB EXPIRED 50000
+        let token = jwt.sign({ user: user }, tokenkey, { expiresIn: 50000 });//TOKEN DB EXPIRED 50000
 
         let updateLastLogin = `UPDATE users
                                 SET lastLogin = ($1)
@@ -32,7 +33,7 @@ async function validateToken(user) {
                     username: user.username,
                     role: user.role,
                     name: user.name,
-                    firstname: user.firstname,
+                    lastname: user.lastname
                 }));
             }
 
@@ -49,20 +50,22 @@ module.exports = function (app) {
             //password encryption
             password = bcrypt.hashSync(password, 10);
             //user creation
+            console.log('register', 'preparacion de creacion');
             const user = await User.create(
                 { 
                     username: username,
                     password: password, 
-                    workshop: workshop, 
                     name: name,
                     lastname: lastname,
-                    role: role,
+                    workshop: workshop, 
                     active: true,
+                    role: role,
                     createdAt: new Date(),
                     updatedAt: new Date(),
                 },
             );
             //verification code generation
+            console.log('register', 'usuario guardado');
             const verificationToken = await VerificationToken.create(
                 { 
                     username: user.dataValues.username, 

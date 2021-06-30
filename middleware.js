@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
+const tokenkey =  process.env.TOKEN_KEY;
 
 module.exports = function (app) {
 
@@ -30,7 +31,7 @@ module.exports = function (app) {
                 });
             }
 
-            jwt.verify(token, "RCardSecret", (err, decoded) => {
+            jwt.verify(token, tokenkey, (err, decoded) => {
                 if (err) {
                     return res.json({
                         success: false,

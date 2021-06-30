@@ -64,6 +64,10 @@ function syncTables() {
         'workshop',
         'user',
         'verificationToken',
+        'client',
+        'productType',
+        'identificative',
+        'product'
     ];
 
     async.eachSeries(order, function (file, callback) {

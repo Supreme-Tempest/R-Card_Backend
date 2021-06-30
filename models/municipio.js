@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 const { sequelize } = require('../services/initService');
 const workshop = require('./workshop');
+const department = require('./department');
 
 const Municipio  = sequelize.define('municipios', {
     id: {
@@ -13,7 +14,6 @@ const Municipio  = sequelize.define('municipios', {
     name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true 
     },
     department: {
         type: Sequelize.INTEGER,
@@ -24,6 +24,7 @@ const Municipio  = sequelize.define('municipios', {
     }
 }, { timestamps: false });
 
+//Municipio.hasOne(department, {as: 'department', foreignKey: 'department', targetKey: 'department'} );
 Municipio.hasMany(workshop, { as: 'workshops', foreignKey: 'municipio', foreignKeyConstraint: true });
 
 module.exports = Municipio;

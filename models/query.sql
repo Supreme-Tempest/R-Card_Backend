@@ -1,15 +1,31 @@
---select * from roles;
---select * from users;
---select * from verification_tokens;
+/*
+select * from roles;
+select * from users;
+select * from verification_tokens;
+select * from departments;
+select * from municipios;
+*/
+/*
+drop table verification_tokens;
+drop table users;
+drop table roles;
+drop table workshops;
+drop table municipios; 
+drop table departments;
+drop table clients;
+drop table products;
+drop table identificatives;
+drop table productTypes;
+*/
 
-insert into roles (name, createdAt, updatedAt) 
-	values ('admin', current_date, current_date);
+insert into roles (name) 
+	values ('admin');
 	
-insert into roles (name, createdAt, updatedAt) 
-	values ('manager', current_date, current_date);
+insert into roles (name) 
+	values ('manager');
 
-insert into roles (name, createdAt, updatedAt) 
-	values ('seller', current_date, current_date);
+insert into roles (name) 
+	values ('seller');
 	
 insert into departments (name) values ('Ahuchapan');
 insert into departments (name) values ('Santa Ana');
@@ -188,7 +204,7 @@ insert into municipios (department,name)values (10, 'Olocuilta');
 insert into municipios (department,name)values (10, 'Paraíso de Osorio');
 insert into municipios (department,name)values (10, 'San Antonio Masahuat');
 insert into municipios (department,name)values (10, 'San Emigdio');
-insert into municipios (department,name)values (10, 'San Francisco Chinameca')
+insert into municipios (department,name)values (10, 'San Francisco Chinameca');
 insert into municipios (department,name)values (10, 'San Juan Nonualco');
 insert into municipios (department,name)values (10, 'San Juan Talpa');
 insert into municipios (department,name)values (10, 'San Juan Tepezontes');
