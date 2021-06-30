@@ -18,9 +18,9 @@ const Municipio  = sequelize.define('municipios', {
     department: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        //onUpdate: "cascade",
-        //onDelete: "cascade",
-        //references: { model: "departments", key: "id" }
+        onUpdate: "cascade",
+        onDelete: "cascade",
+        references: { model: "departments", key: "id" }
     }
 }, { timestamps: false });
 
