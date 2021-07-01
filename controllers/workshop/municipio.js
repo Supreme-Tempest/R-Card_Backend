@@ -1,8 +1,6 @@
-const municipio = require('../../models/municipio');
-const Department = require('../../models/department');
+const municipio = require('../../models/wokshop/municipio');
 
-
-const municipioGetAll = (req, res) => {
+const getAll = (req, res) => {
     console.log('municipios: ', req.body);
     try {
         municipio.findAll()
@@ -19,11 +17,11 @@ const municipioGetAll = (req, res) => {
     }
 };
 
-const municipioGetByDepartment = (department, req, res) => {
+const getByDepartment = (department, req, res) => {
     console.log('municipios by department: ', req.body);
     try {
         municipio.findAll({
-            //where: { department: department }, 
+            where: { department: department }, 
             //include: Department,
         })
         .then((result)=>{
@@ -40,6 +38,6 @@ const municipioGetByDepartment = (department, req, res) => {
 };
 
 module.exports = {
-    municipioGetAll: municipioGetAll,
-    municipioGetByDepartment: municipioGetByDepartment,
+    getAll: getAll,
+    getByDepartment: getByDepartment,
 };

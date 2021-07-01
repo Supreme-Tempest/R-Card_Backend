@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
-const { sequelize } = require('../services/initService');
+const { sequelize } = require('../../services/initService');
 const user = require('./user');
 
 const Role  = sequelize.define('roles', {

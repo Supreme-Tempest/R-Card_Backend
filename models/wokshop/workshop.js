@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
-const { sequelize } = require('../services/initService');
+const { sequelize } = require('../../services/initService');
+const user = require('../users/user');
 
-const Identificative  = sequelize.define('identificatives', {
+const Workshop  = sequelize.define('workshops', {
     id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,14 +13,17 @@ const Identificative  = sequelize.define('identificatives', {
     name: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true
     },
-    productType: {
+    municipio: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onUpdate: "cascade",
         onDelete: "cascade",
-        references: { model: "product_types", key: "id" }
+        references: { model: "municipios", key: "id" }
     }
-},{ timestamps: false });
+}, { timestamps: false });
 
-module.exports = Identificative; 
+Workshop.hasMany(user, { as: 'users',foreignKey: 'workshop', foreignKeyConstraint: true });
+
+module.exports = Workshop;

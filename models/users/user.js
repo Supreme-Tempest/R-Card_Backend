@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
-const { sequelize } = require('../services/initService');
+const { sequelize } = require('../../services/initService');
 const VerificationToken = require('./verificationToken');
 
 const User  = sequelize.define('users', {
