@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 const { sequelize } = require('../../services/initService');
-const workshop = require('../wokshop/workshop');
+const workshop = require('../workshop/workshop');
 //const department = require('./department');
 
 const Municipio  = sequelize.define('municipios', {

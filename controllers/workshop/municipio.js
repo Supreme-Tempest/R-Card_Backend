@@ -1,4 +1,4 @@
-const municipio = require('../../models/wokshop/municipio');
+const municipio = require('../../models/workshop/municipio');
 
 const getAll = (req, res) => {
     console.log('municipios: ', req.body);
