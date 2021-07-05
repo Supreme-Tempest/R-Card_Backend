@@ -19,13 +19,13 @@ drop table productTypes;
 */
 
 insert into roles (name) 
-	values ('admin');
-	
+	values ('seller');
+
 insert into roles (name) 
 	values ('manager');
 
 insert into roles (name) 
-	values ('seller');
+	values ('admin');
 	
 insert into departments (name) values ('Ahuchapan');
 insert into departments (name) values ('Santa Ana');
@@ -305,3 +305,18 @@ insert into municipios (department,name)values (14, 'San José');
 insert into municipios (department,name)values (14, 'Santa Rosa de Lima');
 insert into municipios (department,name)values (14, 'Yayantique');
 insert into municipios (department,name)values (14, 'Yucuaiquín');
+
+insert into workshops (name, municipio) values ("workshop 01", 1);
+insert into workshops (name, municipio) values ("workshop 02", 2);
+insert into workshops (name, municipio) values ("workshop 03", 3);
+insert into workshops (name, municipio) values ("workshop 04", 1);
+insert into workshops (name, municipio) values ("workshop 05", 1);
+insert into workshops (name, municipio) values ("workshop 06", 1);
+insert into workshops (name, municipio) values ("workshop 07", 4);
+insert into workshops (name, municipio) values ("workshop 08", 3);
+insert into workshops (name, municipio) values ("workshop 09", 5);
+insert into workshops (name, municipio) values ("workshop 10", 1);
+insert into workshops (name, municipio) values ("workshop 11", 2);
+insert into workshops (name, municipio) values ("workshop 12", 1);
+insert into workshops (name, municipio) values ("workshop 13", 3);
+insert into workshops (name, municipio) values ("workshop 14", 2);
