@@ -36,7 +36,6 @@ async function validateToken(user) {
                     lastname: user.lastname
                 }));
             }
-
         })
     });
 }
@@ -58,24 +57,14 @@ module.exports = function (app) {
                     name: name,
                     lastname: lastname,
                     workshop: workshop, 
-                    active: true,
                     role: role,
+                    active: true,
+                    lastlogin: null,
                     createdAt: new Date(),
                     updatedAt: new Date(),
                 },
             );
-            //verification code generation
-            console.log('register', 'usuario guardado');
-            const verificationToken = await VerificationToken.create(
-                { 
-                    username: user.dataValues.username, 
-                    token: cryptoRandomString({ length: 20, type: 'url-safe' }), 
-                    createdat: new Date(),
-                    updatedat: new Date(),
-                },
-            )
             return res.status(200).send(`You have Registered Successfully`)
-
         } catch (err) {
             console.log("err1 ", err.errors);
             return res.status(500).json({error: err.errors[0]});
@@ -114,9 +103,6 @@ module.exports = function (app) {
         } catch (err) {
             console.log('register: ', err.message);
             return res.status(500).send(err);
-
         }
     });
-
-
 };
