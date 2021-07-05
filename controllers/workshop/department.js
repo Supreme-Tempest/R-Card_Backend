@@ -1,4 +1,4 @@
-const department = require('../../models/wokshop/department');
+const department = require('../../models/workshop/department');
 
 
 const getAll = (req, res) => {

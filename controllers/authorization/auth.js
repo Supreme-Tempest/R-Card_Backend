@@ -2,10 +2,10 @@ const bcrypt = require('bcryptjs');
 const pool = require('../../services/initService').pool;
 const jwt = require('jsonwebtoken');
 const User = require('../../models/users/user');
-const cryptoRandomString = require('crypto-random-string');
-const VerificationToken = require('../../models/users/verificationToken');
+//const cryptoRandomString = require('crypto-random-string');
+//const VerificationToken = require('../../models/users/verificationToken');
 //const verificationService = require('../../services/verificationService');
-const Roles = require('../../tools/roles');
+//const Roles = require('../../tools/roles');
 const tokenkey =  process.env.TOKEN_KEY;
 
 async function validateToken(user) {

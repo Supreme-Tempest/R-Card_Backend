@@ -1,4 +1,4 @@
-const workshop = require('../../models/wokshop/workshop');
+const workshop = require('../../models/workshop/workshop');
 
 const getAll = (req, res) => {
     console.log('workshop: ', req.body);

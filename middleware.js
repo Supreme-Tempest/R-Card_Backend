@@ -6,19 +6,16 @@ module.exports = function (app) {
 
     app.use(bodyParser.json({ limit: '10mb' }));
     app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
-
     app.use('/api', function (req, res, next) {
-
         if(req.method === 'OPTIONS') {
             next();
             return;
         }
-        //console.log(req.headers);
 
+        //console.log(req.headers);
         let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
 
         //console.log('manda token: ', 'no');
-
         if (token) {
             if (token.startsWith('Bearer ')) {
                 // Remove Bearer from string

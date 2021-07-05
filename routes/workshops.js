@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const department = require('../controllers/workshop/departmentController');
-const municipio = require('../controllers/workshop/municipioController');
+const department = require('../controllers/workshop/department');
+const municipio = require('../controllers/workshop/municipio');
 const workshop = require('../controllers/workshop/workshop');
 
 /* GET users listing. */
