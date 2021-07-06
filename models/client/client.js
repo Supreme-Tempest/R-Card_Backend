@@ -6,7 +6,10 @@ const Client = sequelize.define('clients', {
     number_card: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        unique: {
+            args: true,
+            msg: { code: 40145, msg: 'client card ya existe' },
+        }
     },
     dui: {
         allowNull: false,
