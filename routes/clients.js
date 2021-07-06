@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 const client = require('../controllers/client/client');
 
-router.get('/clientes', function(req, res, next) {
+router.get('/clients', function(req, res, next) {
     client.getAll(req, res);
 });
 
-router.post('/clientes', function(req, res, next) {
+router.post('/clients', function(req, res, next) {
     data = {
         number_card: req.body.number_card,
         dui: req.body.dui,
@@ -18,7 +18,7 @@ router.post('/clientes', function(req, res, next) {
     client.save(data, req, res);
 });
 
-router.put('/clientes', function(req, res, next) {
+router.put('/clients', function(req, res, next) {
     data = {
         number_card: req.body.number_card,
         dui: req.body.dui,
