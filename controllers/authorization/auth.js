@@ -33,7 +33,8 @@ async function validateToken(user) {
                     username: user.username,
                     role: user.role,
                     name: user.name,
-                    lastname: user.lastname
+                    lastname: user.lastname,
+                    active: user.active,
                 }));
             }
         })
@@ -90,7 +91,8 @@ module.exports = function (app) {
                 else {
                     console.log('validando token');
                     const data = await validateToken(results.dataValues);
-                    if (data.active) {
+                    if (results.active) {
+                        console.log("validando token success");
                         return res.status(200).send(data);
                     } else {
                         return res.status(5001).send({
