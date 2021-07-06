@@ -18,6 +18,7 @@ router.get('/municipios/:department', function(req, res, next) {
 });
 
 router.get('/workshop', function(req, res, next) {
+    console.log('workshop get');
     workshop.getAll(req, res);
 });
 

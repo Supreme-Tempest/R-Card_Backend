@@ -11,7 +11,7 @@ module.exports = function (app) {
             next();
             return;
         }
-
+        console.log('api verofy');
         //console.log(req.headers);
         let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
 
