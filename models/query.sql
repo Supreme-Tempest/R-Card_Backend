@@ -18,14 +18,14 @@ drop table identificatives;
 drop table product_types;
 */
 
-insert into roles (role,name) 
-	values ('seller', 'vendedor');
+insert into roles (role,name, levelaccess) 
+	values ('seller', 'vendedor',5);
 
-insert into roles (role, name) 
-	values ('manager', 'gerente');
+insert into roles (role, name, levelaccess) 
+	values ('manager', 'gerente', 3);
 
-insert into roles (role, name) 
-	values ('admin', 'administrador');
+insert into roles (role, name, levelaccess) 
+	values ('admin', 'administrador', 1);
 	
 insert into departments (name) values ('Ahuchapan');
 insert into departments (name) values ('Santa Ana');

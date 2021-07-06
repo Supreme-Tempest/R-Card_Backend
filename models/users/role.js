@@ -18,6 +18,11 @@ const Role  = sequelize.define('roles', {
         allowNull: false,
         unique: true
     },
+
+    levelaccess: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
 }, { timestamps: false });
 
 Role.hasMany(user, { as: 'users',foreignKey: 'role', foreignKeyConstraint: true });
