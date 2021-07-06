@@ -49,6 +49,7 @@ module.exports = function (app) {
             let { username, password, workshop, role, name, lastname } = req.body;
             //password encryption
             password = bcrypt.hashSync(password, 10);
+            console.log ('passwrod cifrado:', password)
             //user creation
             console.log('register', 'preparacion de creacion');
             const user = await User.create(
