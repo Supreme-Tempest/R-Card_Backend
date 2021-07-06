@@ -329,3 +329,9 @@ insert into users
 			
 insert into clients (number_card, dui, name,creation_date, birthday,state) 
 	values ('3000 5874 4589','00124587-9','Cristian Alfaro',current_date,current_date,TRUE);
+insert into clients (number_card, dui, name,creation_date, birthday,state) 
+	values ('3000 5874 7896','00124587-9','Luis Trujillo',current_date,current_date,TRUE);
+insert into clients (number_card, dui, name,creation_date, birthday,state) 
+	values ('3000 5874 4826','00124587-9','Jose Luis Gonzales',current_date,current_date,TRUE);
+insert into clients (number_card, dui, name,creation_date, birthday,state) 
+	values ('3000 5874 3659','00124587-9','Marvin Josue Lopez',current_date,current_date,TRUE);
