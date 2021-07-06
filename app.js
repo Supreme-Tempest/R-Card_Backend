@@ -62,7 +62,7 @@ app.use(express.static(path.join('../R-card FrontEnd/', 'public')));
 
 app.use('/api/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/workshop', workshopRouter);
+app.use('/api/workshop', workshopRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
