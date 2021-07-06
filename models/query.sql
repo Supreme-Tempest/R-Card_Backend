@@ -326,3 +326,6 @@ insert into users
 	values ('admin',
 			'$2a$10$3IYgxcX6i.qEOheOSztYXO/GrxLPVFKRUvB94n7ACjmpGZxC4ORMS', 
 			'El admin', 'master', 1, true, 'admin', null, current_date, current_date);
+			
+insert into clients (number_card, dui, name,creation_date, birthday,state) 
+	values ('3000 5874 4589','00124587-9','Cristian Alfaro',current_date,current_date,TRUE);
