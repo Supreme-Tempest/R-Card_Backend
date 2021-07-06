@@ -9,7 +9,7 @@ const Client = sequelize.define('clients', {
         primaryKey: true,
         unique: {
             args: true,
-            msg: { code: 40145, msg: 'client card ya existe' },
+            msg: { code: 40145, msg: 'numero de tarjeta ya existe' },
         }
     },
     dui: {

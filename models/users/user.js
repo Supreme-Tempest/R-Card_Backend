@@ -45,15 +45,15 @@ const User  = sequelize.define('users', {
     lastlogin: {
         type: DataTypes.DATE
     },
-    createdAt: {
+    created: {
         allowNull: false,
         type: Sequelize.DATE
     },
-    updatedAt: {
+    updated: {
         allowNull: false,
         type: Sequelize.DATE
     }
-});
+}, { timestamps: false });
 
 User.hasOne(VerificationToken, { as: 'verificationtoken',foreignKey: 'username', foreignKeyConstraint: true });
 

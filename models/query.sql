@@ -320,3 +320,7 @@ insert into workshops (name, municipio) values ('workshop 11', 2);
 insert into workshops (name, municipio) values ('workshop 12', 1);
 insert into workshops (name, municipio) values ('workshop 13', 3);
 insert into workshops (name, municipio) values ('workshop 14', 2);
+
+insert into users
+	(username, password, name, lastname, workshop, active, role, lastlogin, created, updated) 
+	values ('admin', 'admin', 'El admin', 'master', 1, true, 3, null, current_date, current_date);
