@@ -5,6 +5,7 @@ const { sequelize } = require('../../services/initService');
 const Client = sequelize.define('clients', {
     number_card: {
         allowNull: false,
+        type: DataTypes.STRING,
         primaryKey: true,
         unique: {
             args: true,
