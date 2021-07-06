@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 const { sequelize } = require('../../services/initService');
 const VerificationToken = require('./verificationToken');
+const Role = require('./role');
 
 const User  = sequelize.define('users', {
     username: {
@@ -36,25 +37,27 @@ const User  = sequelize.define('users', {
         type: DataTypes.BOOLEAN
     },
     role: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
         onUpdate: "cascade",
         onDelete: "cascade",
-        references: { model: "roles", key: "id" }
+        references: { model: "roles", key: "role" }
     },
     lastlogin: {
         type: DataTypes.DATE
     },
-    createdAt: {
+    created: {
         allowNull: false,
         type: Sequelize.DATE
     },
-    updatedAt: {
+    updated: {
         allowNull: false,
         type: Sequelize.DATE
     }
-});
+}, { timestamps: false });
 
+User.belongsTo(Role, { as: 'roles',foreignKey: 'role' });
+Role.hasMany(User, { as: 'users',foreignKey: 'role' });
 User.hasOne(VerificationToken, { as: 'verificationtoken',foreignKey: 'username', foreignKeyConstraint: true });
 
 module.exports = User;

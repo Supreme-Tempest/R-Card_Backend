@@ -5,8 +5,12 @@ const { sequelize } = require('../../services/initService');
 const Client = sequelize.define('clients', {
     number_card: {
         allowNull: false,
+        type: DataTypes.STRING,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        unique: {
+            args: true,
+            msg: { code: 40145, msg: 'numero de tarjeta ya existe' },
+        }
     },
     dui: {
         allowNull: false,

@@ -4,19 +4,26 @@ const { sequelize } = require('../../services/initService');
 const user = require('./user');
 
 const Role  = sequelize.define('roles', {
-    id: {
+    role: {
+        type: DataTypes.STRING,
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        unique: {
+            args: true,
+            msg: {code: 40145, msg: 'rol ya existe'},
+        }
     },
     name: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true
     },
+
+    levelaccess: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
 }, { timestamps: false });
 
-Role.hasMany(user, { as: 'users',foreignKey: 'role', foreignKeyConstraint: true });
 
 module.exports = Role;

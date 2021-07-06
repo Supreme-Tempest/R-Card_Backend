@@ -10,9 +10,11 @@ const { initSequelize } = require('./services/initService');
 const authController = require('./controllers/authorization/auth');
 const userController = require('./controllers/users/users');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-const workshopRouter = require('./routes/workshops')
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const workshopRouter = require('./routes/workshops');
+const clientsRouter = require('./routes/clients');
+const productRouter = require('./routes/products');
 
 var app = express();
 
@@ -63,9 +65,11 @@ app.use(express.static(path.join('../R-card FrontEnd/', 'public')));
 app.use('/api/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/workshop', workshopRouter);
+app.use('/api/clients', clientsRouter);
+app.use('/api/products', productRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function(req, res, next) {  
   next(createError(404));
 });
 

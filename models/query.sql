@@ -18,14 +18,14 @@ drop table identificatives;
 drop table product_types;
 */
 
-insert into roles (name) 
-	values ('seller');
+insert into roles (role,name, levelaccess) 
+	values ('seller', 'vendedor',1);
 
-insert into roles (name) 
-	values ('manager');
+insert into roles (role, name, levelaccess) 
+	values ('manager', 'gerente', 3);
 
-insert into roles (name) 
-	values ('admin');
+insert into roles (role, name, levelaccess) 
+	values ('admin', 'administrador', 5);
 	
 insert into departments (name) values ('Ahuchapan');
 insert into departments (name) values ('Santa Ana');
@@ -320,3 +320,9 @@ insert into workshops (name, municipio) values ('workshop 11', 2);
 insert into workshops (name, municipio) values ('workshop 12', 1);
 insert into workshops (name, municipio) values ('workshop 13', 3);
 insert into workshops (name, municipio) values ('workshop 14', 2);
+
+insert into users
+	(username, password, name, lastname, workshop, active, role, lastlogin, created, updated) 
+	values ('admin',
+			'$2a$10$3IYgxcX6i.qEOheOSztYXO/GrxLPVFKRUvB94n7ACjmpGZxC4ORMS', 
+			'El admin', 'master', 1, true, 'admin', null, current_date, current_date);
