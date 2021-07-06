@@ -1,4 +1,4 @@
-export const paginate = async (model, pageSize, pageLimit, search = {}, transform) => {
+const paginate = (model, pageSize, pageLimit, search = {}, transform) => {
     try {
         const limit = parseInt(pageLimit, 10) || 10;
         const page = parseInt(pageSize, 10) || 1;
@@ -15,10 +15,11 @@ export const paginate = async (model, pageSize, pageLimit, search = {}, transfor
         }
 
         // take in the model, take in the options
-        let {count, rows} = await model.findAndCountAll(options);
-
+        let {count, rows} = model.findAll(options);
+        console.log("rows: ", rows);
         // check if the transform is a function and is not null
         if (transform && typeof transform === 'function') {
+            console.log("preview mapper");
             rows = transform(rows);
         }
 
@@ -53,3 +54,5 @@ const getPreviousPage = (page) => {
     }
     return page - 1;
 }
+
+module.exports = paginate;

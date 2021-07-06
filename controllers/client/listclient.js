@@ -1,9 +1,10 @@
-import ClientModel from '../../models/client/client';
+const ClientModel = require('../../models/client/client');
+const paginate = require('../tools/pagination');
 
-export const listClient = async(req, res) => {
+const listClient = (req, res) => {
     try {
         // get the query params
-        const { page, limit, filter } = req.query;
+        const { page, size, filter } = req.query;
         let search = {};
 
         // add the search term to the search object
@@ -29,13 +30,14 @@ export const listClient = async(req, res) => {
             });
         }
 
+        console.log("preview to clientpag");
         // paginate method that takes in the model, page, limit, search object, order and transform
-        const clients = await paginate(ClientModel, page, limit, search, transform);
+        const clients = paginate(ClientModel, page, size, search, transform);
 
         return res.status(200).send({
             success: true,
             message: 'Fetched clients',
-            data: products
+            data: clients
         })
     } catch (error) {
         console.log('Failed to fetch clients', error);
@@ -45,3 +47,7 @@ export const listClient = async(req, res) => {
         })
     }
 }
+
+module.exports = {
+    listClient: listClient,
+};
