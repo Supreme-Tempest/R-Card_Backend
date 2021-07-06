@@ -19,13 +19,13 @@ drop table product_types;
 */
 
 insert into roles (role,name, levelaccess) 
-	values ('seller', 'vendedor',5);
+	values ('seller', 'vendedor',1);
 
 insert into roles (role, name, levelaccess) 
 	values ('manager', 'gerente', 3);
 
 insert into roles (role, name, levelaccess) 
-	values ('admin', 'administrador', 1);
+	values ('admin', 'administrador', 5);
 	
 insert into departments (name) values ('Ahuchapan');
 insert into departments (name) values ('Santa Ana');

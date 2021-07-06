@@ -87,7 +87,8 @@ module.exports = function (app) {
                     { model: Role, as: 'roles'}
                 ]
             });
-            console.log('user login:', results);
+            console.log('user login:', results.dataValues);
+            console.log('user role: ', results.dataValues.roles.dataValues);
             //console.log('result:', results);
             if (!results) {
                 return res.status(401).send('Invalid login credentials');
