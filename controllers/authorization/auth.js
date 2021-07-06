@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const pool = require('../../services/initService').pool;
 const jwt = require('jsonwebtoken');
 const User = require('../../models/users/user');
+const Role = require('../../models/users/role');
 //const cryptoRandomString = require('crypto-random-string');
 //const VerificationToken = require('../../models/users/verificationToken');
 //const verificationService = require('../../services/verificationService');
@@ -80,7 +81,13 @@ module.exports = function (app) {
         try {
             const { username, password } = req.body;
             //console.log(username, password);
-            const results = await User.findOne({ where: { username: username } });
+            const results = await User.findOne({ 
+                where: { username: username },
+                include: [
+                    { model: Role, as: 'roles'}
+                ]
+            });
+            console.log('user login:', results);
             //console.log('result:', results);
             if (!results) {
                 return res.status(401).send('Invalid login credentials');
@@ -104,7 +111,7 @@ module.exports = function (app) {
                 }
             }
         } catch (err) {
-            console.log('register: ', err.message);
+            console.log('login: ', err.message);
             return res.status(500).send(err);
         }
     });
