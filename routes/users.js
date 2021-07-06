@@ -1,22 +1,25 @@
 var express = require('express');
 var router = express.Router();
 const role = require('../controllers/users/roles');
+const user = require('../controllers/users/users');
 
-/* GET users listing. */
-router.get('/user', function(req, res, next) {
-  res.send(
-    {
-      data: {
-        user: 'my_user',
-        title: 'main page',
-        size: 99,
-      },
-      meta: {
-        size: 99,
-        page: 99,
-      }, 
-    }
-  );
+router.get('/users', function(req, res, next) {
+  user.getAll(req, res);
+});
+
+router.post('/users', function(req, res, next) {
+  data = {
+      name: req.body.name,
+  }
+  user.save(data, req, res);
+});
+
+router.put('/users', function(req, res, next) {
+  data = {
+      id: req.body.id,
+      name: req.body.name,
+  }
+  user.update(data, req, res);
 });
 
 router.get('/roles', function(req, res, next) {
