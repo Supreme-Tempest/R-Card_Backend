@@ -3,6 +3,7 @@ const DataTypes = Sequelize.DataTypes;
 const { sequelize } = require('../../services/initService');
 const VerificationToken = require('./verificationToken');
 const Role = require('./role');
+const Workshop = require('../workshop/workshop');
 
 const User  = sequelize.define('users', {
     username: {
@@ -26,7 +27,7 @@ const User  = sequelize.define('users', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    workshop: {
+    workshop_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onUpdate: "cascade",
@@ -36,7 +37,7 @@ const User  = sequelize.define('users', {
     active: {
         type: DataTypes.BOOLEAN
     },
-    role: {
+    role_id: {
         type: Sequelize.STRING,
         allowNull: false,
         onUpdate: "cascade",
@@ -56,8 +57,9 @@ const User  = sequelize.define('users', {
     }
 }, { timestamps: false });
 
-User.belongsTo(Role, { as: 'roles',foreignKey: 'role' });
-Role.hasMany(User, { as: 'users',foreignKey: 'role' });
+User.belongsTo(Role, { as: 'role',foreignKey: 'role_id' });
+User.belongsTo(Workshop, { as: 'workshop',foreignKey: 'workshop_id' });
+//Role.hasMany(User, { as: 'users',foreignKey: 'role' });
 User.hasOne(VerificationToken, { as: 'verificationtoken',foreignKey: 'username', foreignKeyConstraint: true });
 
 module.exports = User;

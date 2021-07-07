@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 const { sequelize } = require('../../services/initService');
-const user = require('../users/user');
+//const user = require('../users/user');
+const Municipio = require('./municipio');
 
 const Workshop  = sequelize.define('workshops', {
     id: {
@@ -15,7 +16,7 @@ const Workshop  = sequelize.define('workshops', {
         allowNull: false,
         unique: true
     },
-    municipio: {
+    municipio_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onUpdate: "cascade",
@@ -24,6 +25,7 @@ const Workshop  = sequelize.define('workshops', {
     }
 }, { timestamps: false });
 
-Workshop.hasMany(user, { as: 'users',foreignKey: 'workshop', foreignKeyConstraint: true });
+Workshop.belongsTo(Municipio, {as: 'municipio', foreignKey: 'municipio_id'})
+//Workshop.hasMany(user, { as: 'users',foreignKey: 'workshop', foreignKeyConstraint: true });
 
 module.exports = Workshop;

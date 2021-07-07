@@ -84,11 +84,11 @@ module.exports = function (app) {
             const results = await User.findOne({ 
                 where: { username: username },
                 include: [
-                    { model: Role, as: 'roles'}
+                    { model: Role, as: 'role'}
                 ]
             });
             console.log('user login:', results.dataValues);
-            console.log('user role: ', results.dataValues.roles.dataValues);
+            console.log('user role: ', results.dataValues.role.dataValues);
             //console.log('result:', results);
             if (!results) {
                 return res.status(401).send('Invalid login credentials');

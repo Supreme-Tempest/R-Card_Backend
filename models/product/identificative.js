@@ -13,7 +13,7 @@ const Identificative  = sequelize.define('identificatives', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    productType: {
+    type_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onUpdate: "cascade",
