@@ -6,7 +6,7 @@ const getAll = (req, res) => {
         role.findAll()
         .then((result)=>{
             //const data = results.dataValues;
-            console.log(result.dataValues);
+            console.log(result);
             return res.status(200).send(result);
         })
         .catch((e)=>{
