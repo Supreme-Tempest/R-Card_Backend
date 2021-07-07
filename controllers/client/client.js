@@ -5,7 +5,7 @@ const getAll = (req, res) => {
     try {
         client.findAll()
         .then((result)=>{
-            //const data = results.dataValues;
+            const data = results.dataValues;
             return res.status(200).send(result);
         })
         .catch((e)=>{

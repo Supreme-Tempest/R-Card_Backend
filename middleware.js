@@ -37,6 +37,7 @@ module.exports = function (app) {
                     });
                 } else {
                     req.decoded = decoded;
+                    console.log("token true");
                     next();
                 }
             });
