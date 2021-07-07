@@ -5,6 +5,7 @@ const getAll = (req, res) => {
     try {
         workshop.findAll()
         .then((result)=>{
+            console.log(result.dataValues);
             //const data = results.dataValues;
             return res.status(200).send(result);
         })
@@ -44,6 +45,7 @@ const save = (item, req, res) => {
         workshop.create(item)
         .then((result)=>{
             //const data = results.dataValues;
+            //console.log(results.dataValues);
             return res.status(200).send(result);
         })
         .catch((e)=>{

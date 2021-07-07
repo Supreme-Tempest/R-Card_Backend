@@ -5,10 +5,11 @@ const getAll = (req, res) => {
     try {
         client.findAll()
         .then((result)=>{
-            const data = results.dataValues;
+            console.log(result.dataValues);
             return res.status(200).send(result);
         })
         .catch((e)=>{
+            console.log("F. client");
             return res.status(400).send(e);
         })  ;
     } catch (err) {
