@@ -15,6 +15,7 @@ router.post('/clients', function(req, res, next) {
         birthday: req.body.birthday,
         state: true,
     }
+    console.log(data);
     client.save(data, req, res);
 });
 
