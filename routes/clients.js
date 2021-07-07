@@ -8,6 +8,7 @@ router.get('/clients', function(req, res, next) {
 });
 
 router.get('/clientsPaginate', function(req, res, next) {
+    console.log("requiere", req.body);
     clientPage.listClient(req, res);
 });
 

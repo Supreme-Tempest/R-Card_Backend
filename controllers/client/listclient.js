@@ -1,10 +1,10 @@
 const ClientModel = require('../../models/client/client');
 const paginate = require('../tools/pagination');
 
-const listClient = (req, res) => {
+async function listClient(req, res) {
     try {
         // get the query params
-        const { page, size, filter } = req.query;
+        const { page, size, filter } = req.body;
         let search = {};
 
         // add the search term to the search object
@@ -23,8 +23,8 @@ const listClient = (req, res) => {
                     card: record.number_card,
                     dui: record.dui,
                     name: record.name,
-                    contratation:  moment(record.creation_date).format('D-M-Y H:mm A'),
-                    birthday: moment(record.birthday).format('D-M-Y H:mm A'),
+                    contratation:  record.creation_date,
+                    birthday: record.birthday,
                     state: record.state,
                 }
             });
@@ -32,8 +32,8 @@ const listClient = (req, res) => {
 
         console.log("preview to clientpag");
         // paginate method that takes in the model, page, limit, search object, order and transform
-        const clients = paginate(ClientModel, page, size, search, transform);
-
+        const clients = await paginate(ClientModel, page, size, search, transform, res)
+        console.log("clients: ", clients);
         return res.status(200).send({
             success: true,
             message: 'Fetched clients',
