@@ -1,13 +1,23 @@
 const workshop = require('../../models/workshop/workshop');
 
+const transform = (records) => {
+    return records.map((record) => {
+        return {
+            id: record.id,
+            name: record.name,
+            municipio: record.municipio,
+        }
+    });
+}
+
 const getAll = (req, res) => {
     console.log('workshop: ', req.body);
     try {
         workshop.findAll()
         .then((result)=>{
-            console.log(result.dataValues);
+            //console.log(result.dataValues);
             //const data = results.dataValues;
-            return res.status(200).send(result);
+            return res.status(200).send(transform(result));
         })
         .catch((e)=>{
             return res.status(400).send(e);
@@ -27,7 +37,7 @@ const getByMunicipio = (municipio, req, res) => {
         })
         .then((result)=>{
             //const data = results.dataValues;
-            return res.status(200).send(result);
+            return res.status(200).send(transform(result));
         })
         .catch((e)=>{
             return res.status(400).send(e);

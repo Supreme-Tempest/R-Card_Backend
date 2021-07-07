@@ -3,9 +3,15 @@ var router = express.Router();
 const product = require('../controllers/product/product');
 const type = require('../controllers/product/productType');
 const identificatice = require('../controllers/product/identificative');
+const productsPaginate = require('../controllers/product/listproduct');
 
 router.get('/product', function(req, res, next) {
     product.getAll(req, res);
+});
+
+router.get('/productsPaginate', function(req, res, next) {
+    console.log("requiere", req.body);
+    productsPaginate.listProduct(req, res);
 });
 
 router.get('/product/:product_type', function(req, res, next) {
