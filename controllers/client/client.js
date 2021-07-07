@@ -16,9 +16,9 @@ const transform = (records) => {
 const getAll = (req, res) => {
     console.log('client: ', req.body);
     try {
-        client.findAll()
+        client.findAndCountAll()
         .then((result)=>{
-            //console.log(result[0].dataValues);
+            console.log(transform(result.rows));
             return res.status(200).send(result);
         })
         .catch((e)=>{
