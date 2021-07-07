@@ -41,7 +41,7 @@ const getByMunicipio = (municipio, req, res) => {
 const save = (item, req, res) => {
     console.log('workshop save: ', req.body);
     try {
-        workshop.save(item)
+        workshop.create(item)
         .then((result)=>{
             //const data = results.dataValues;
             return res.status(200).send(result);

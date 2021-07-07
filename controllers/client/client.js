@@ -20,7 +20,7 @@ const getAll = (req, res) => {
 const save = (item, req, res) => {
     console.log('client save: ', req.body);
     try {
-        client.save(item)
+        client.create(item)
         .then((result)=>{
             //const data = results.dataValues;
             return res.status(200).send(result);

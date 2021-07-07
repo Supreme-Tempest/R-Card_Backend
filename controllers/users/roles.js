@@ -20,7 +20,7 @@ const getAll = (req, res) => {
 const save = (item, req, res) => {
     console.log('role save: ', req.body);
     try {
-        role.save(item)
+        role.create(item)
         .then((result)=>{
             //const data = results.dataValues;
             return res.status(200).send(result);

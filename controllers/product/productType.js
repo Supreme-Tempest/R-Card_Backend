@@ -20,7 +20,7 @@ const getAll = (req, res) => {
 const save = (item, req, res) => {
     console.log('product_type save: ', req.body);
     try {
-        product.save(item)
+        product.create(item)
         .then((result)=>{
             //const data = results.dataValues;
             return res.status(200).send(result);
