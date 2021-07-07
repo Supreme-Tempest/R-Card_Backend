@@ -18,8 +18,8 @@ const getAll = (req, res) => {
     try {
         client.findAndCountAll()
         .then((result)=>{
-            console.log(transform(result.rows));
-            return res.status(200).send(result);
+            //console.log(transform(result.rows));
+            return res.status(200).send(transform(result.rows));
         })
         .catch((e)=>{
             console.log("F. client");
