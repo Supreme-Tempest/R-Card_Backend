@@ -24,11 +24,12 @@ async function paginate(model, pageSize, pageLimit, search = {}, transform) {
             }
             //console.log("rows: ", rows);
             return {
-                previousPage: getPreviousPage(page),
-                currentPage: page,
-                nextPage: getNextPage(page, limit, count),
+                preview: getPreviousPage(page),
+                current: page,
+                next: getNextPage(page, limit, count),
                 total: count,
-                limit: limit,
+                pages: getPages(pageSize, count),
+                size: limit,
                 data: rows
             }
     } catch (error) {
@@ -43,6 +44,15 @@ const getOffset = (page, limit) => {
 const getNextPage = (page, limit, total) => {
     if ((total/limit) > page) {
         return page + 1;
+    }
+
+    return null
+}
+
+const getPages = (size, total) => {
+    //total / size
+    if (size > 0) {
+        return total / size;
     }
 
     return null
