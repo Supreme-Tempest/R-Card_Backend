@@ -15,16 +15,23 @@ const getAll = (req, res) => {
     try {
         workshop.findAll()
         .then((result)=>{
-            //console.log(result.dataValues);
-            //const data = results.dataValues;
-            return res.status(200).send(transform(result));
+            return res.status(200).json({
+                success: true,
+                data: result,
+            });
         })
         .catch((e)=>{
-            return res.status(400).send(e);
-        })  ;
+            return res.status(400).json({
+                success: false,
+                error: e,
+            });
+        });
     } catch (err) {
         console.log('workshop: ', err.message);
-        return res.status(500).send(err);
+        return res.status(500).json({
+            success: false,
+            error: err,
+        });
     }
 };
 
@@ -36,15 +43,23 @@ const getByMunicipio = (municipio, req, res) => {
             //include: Department,
         })
         .then((result)=>{
-            //const data = results.dataValues;
-            return res.status(200).send(transform(result));
+            return res.status(200).json({
+                success: true,
+                data: result,
+            });
         })
         .catch((e)=>{
-            return res.status(400).send(e);
-        })  ;
+            return res.status(400).json({
+                success: false,
+                error: e,
+            });
+        });
     } catch (err) {
         console.log('workshops by municipio: ', err.message);
-        return res.status(500).send(err);
+        return res.status(500).json({
+            success: false,
+            error: err,
+        });
     }
 };
 
@@ -54,16 +69,23 @@ const save = (item, req, res) => {
     try {
         workshop.create(item)
         .then((result)=>{
-            //const data = results.dataValues;
-            //console.log(results.dataValues);
-            return res.status(200).send(result);
+            return res.status(200).json({
+                success: true,
+                data: result,
+            });
         })
         .catch((e)=>{
-            return res.status(400).send(e);
-        })  ;
+            return res.status(400).json({
+                success: false,
+                error: e,
+            });
+        });
     } catch (err) {
         console.log('workshops save: ', err.message);
-        return res.status(500).send(err);
+        return res.status(500).json({
+            success: false,
+            error: err,
+        });
     }
 };
 
@@ -72,15 +94,23 @@ const update = (item, req, res) => {
     try {
         workshop.update(item)
         .then((result)=>{
-            //const data = results.dataValues;
-            return res.status(200).send(result);
+            return res.status(200).json({
+                success: true,
+                data: result,
+            });
         })
         .catch((e)=>{
-            return res.status(400).send(e);
-        })  ;
+            return res.status(400).json({
+                success: false,
+                error: e,
+            });
+        });
     } catch (err) {
         console.log('workshops update: ', err.message);
-        return res.status(500).send(err);
+        return res.status(500).json({
+            success: false,
+            error: err,
+        });
     }
 };
 
