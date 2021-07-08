@@ -1,4 +1,4 @@
-async function paginate(model, pageSize, pageLimit, search = {}, transform) {
+async function paginate(model, pageSize, pageLimit, search, transform) {
     try {
         const limit = parseInt(pageLimit, 10) || 10;
         const page = parseInt(pageSize, 10) || 1;
@@ -14,10 +14,13 @@ async function paginate(model, pageSize, pageLimit, search = {}, transform) {
             options = {options, ...search};
         }
 
+        console.log('options: ', options);
+
         // take in the model, take in the options
 
         let {count, rows} = await model.findAndCountAll(options);
             // check if the transform is a function and is not null
+            //console.log("rows: ", rows);
             if (transform && typeof transform === 'function') {
                 //console.log("preview mapper");
                 rows = transform(rows);
