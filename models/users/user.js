@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 const { sequelize } = require('../../services/initService');
-const VerificationToken = require('./verificationToken');
+//const VerificationToken = require('./verificationToken');
 const Role = require('./role');
 const Workshop = require('../workshop/workshop');
 
@@ -60,6 +60,6 @@ const User  = sequelize.define('users', {
 User.belongsTo(Role, { as: 'role',foreignKey: 'role_id' });
 User.belongsTo(Workshop, { as: 'workshop',foreignKey: 'workshop_id' });
 //Role.hasMany(User, { as: 'users',foreignKey: 'role' });
-User.hasOne(VerificationToken, { as: 'verificationtoken',foreignKey: 'username', foreignKeyConstraint: true });
+//User.hasOne(VerificationToken, { as: 'verificationtoken',foreignKey: 'username', foreignKeyConstraint: true });
 
 module.exports = User;

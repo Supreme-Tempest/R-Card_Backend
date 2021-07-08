@@ -63,7 +63,6 @@ function syncTables() {
         'workshop/workshop',
         'users/role',
         'users/user',
-        'users/verificationToken',
         'client/client',
         'product/identificativeType',
         'product/productType',
