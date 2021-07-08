@@ -48,8 +48,8 @@ router.get('/type', function(req, res, next) {
     type.getAll(req, res);
 });
 
-router.get('/type/:identificative_type', function(req, res, next) {
-    type.getByType(req.params.product_type, req, res);
+router.get('/type/:type', function(req, res, next) {
+    type.getByType(req.params.type, req, res);
 });
 
 router.post('/type', function(req, res, next) {
@@ -72,6 +72,10 @@ router.put('/type', function(req, res, next) {
 
 router.get('/identificative', function(req, res, next) {
     identificatice.getAll(req, res);
+});
+
+router.get('/identificative/:type', function(req, res, next) {
+    identificatice.getByType(req.params.type,req, res);
 });
 
 router.post('/identificative', function(req, res, next) {

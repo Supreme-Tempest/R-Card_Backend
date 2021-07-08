@@ -342,12 +342,33 @@ insert into clients (number_card, dui, name,creation_date, birthday,state)
 	
 
 insert into identificative_types(name) values ('Talla Camisa');
+insert into identificative_types(name) values ('Talla Pantalon');
+insert into identificative_types(name) values ('Talla Calzado');
 insert into identificatives(name,type_id) values ('Talla M',1);
 insert into identificatives(name,type_id) values ('Talla S',1);
 insert into identificatives(name,type_id) values ('Talla L',1);
 insert into identificatives(name,type_id) values ('Talla XL',1);
 insert into identificatives(name,type_id) values ('Talla XS',1);
-insert into product_types(name,type_id) values ('Camisa',1);
+insert into identificatives(name,type_id) values ('Talla M',2);
+insert into identificatives(name,type_id) values ('Talla S',2);
+insert into identificatives(name,type_id) values ('Talla L',2);
+insert into identificatives(name,type_id) values ('Numero 28',3);
+insert into identificatives(name,type_id) values ('Numero 29',3);
+insert into identificatives(name,type_id) values ('Numero 30',3);
+insert into identificatives(name,type_id) values ('Numero 32',3);
+insert into identificatives(name,type_id) values ('Numero 27',3);
+insert into identificatives(name,type_id) values ('Numero 25',3);
+insert into product_types(name,type_id) values ('Camisa Polo',1);
+insert into product_types(name,type_id) values ('Camisa Manga Larga',1);
+insert into product_types(name,type_id) values ('Camisa Tres Cuartos',1);
+insert into product_types(name,type_id) values ('Centro',1);
+insert into product_types(name,type_id) values ('Tractores',3);
+insert into product_types(name,type_id) values ('Pantalon baquero',2);
+insert into product_types(name,type_id) values ('Chort',2);
+insert into product_types(name,type_id) values ('Jeans',2);
+insert into product_types(name,type_id) values ('Zapatilla',3);
+insert into product_types(name,type_id) values ('Tacones Altos',3);
+insert into product_types(name,type_id) values ('Tacon Corto',3);
 
 insert into products (name,brand,stock,price,type_id,identificative_id) 
 	values ('Camiseta tipo polo','Oscar de la renta',50,102.99,1,1);
