@@ -24,7 +24,8 @@ router.post('/product', function(req, res, next) {
         brand: req.body.brand,
         stock: req.body.stock,
         price: req.body.price,
-        productType: req.body.productType,
+        type_id: req.body.productType,
+        identificative_id: req.body.identificative,
     }
     product.save(data, req, res);
 });
@@ -36,7 +37,8 @@ router.put('/product', function(req, res, next) {
         brand: req.body.brand,
         stock: req.body.stock,
         price: req.body.price,
-        productType: req.body.productType,
+        type_id: req.body.productType,
+        identificative_id: req.body.identificative,
     }
     product.update(data, req, res);
 });
