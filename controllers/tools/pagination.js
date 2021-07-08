@@ -1,7 +1,7 @@
-async function paginate(model, pageSize, pageLimit, search, transform) {
+async function paginate(model, pageNumber, pageSize, search, transform) {
     try {
-        const limit = parseInt(pageLimit, 10) || 10;
-        const page = parseInt(pageSize, 10) || 1;
+        const page = parseInt(pageNumber);
+        const limit = parseInt(pageSize);
 
         // create an options object
         let options = {
