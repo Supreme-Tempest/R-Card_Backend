@@ -11,7 +11,7 @@ async function paginate(model, pageSize, pageLimit, search, transform) {
 
         // check if the search object is empty
         if (Object.keys(search).length) {
-            options = {options, ...search};
+            options = {...options, ...search};
         }
 
         console.log('options: ', options);
