@@ -44,17 +44,23 @@ const save = (item, req, res) => {
         product.create(item)
         .then((result)=>{
             //const data = results.dataValues;
-            return res.json({
+            return res.status(200).json({
                 success: true,
                 data: result,
             });
         })
         .catch((e)=>{
-            return res.status(400).send(e);
+            return res.status(400).json({
+                success: false,
+                error: e,
+            });
         })  ;
     } catch (err) {
         console.log('product save: ', err.message);
-        return res.status(500).send(err);
+        return res.status(500).json({
+            success: false,
+            error: err,
+        });
     }
 };
 
