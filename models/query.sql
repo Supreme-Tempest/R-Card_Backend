@@ -342,10 +342,26 @@ insert into clients (number_card, dui, name,creation_date, birthday,state)
 	
 
 
-insert into product_types(name) values ('Talla M');
+insert into product_types(name) values ('Camisa');
 insert into identificatives(name,type_id) values ('Talla M',1);
+insert into identificatives(name,type_id) values ('Talla S',1);
+insert into identificatives(name,type_id) values ('Talla L',1);
+insert into identificatives(name,type_id) values ('Talla XL',1);
+insert into identificatives(name,type_id) values ('Talla XS',1);
 
 insert into products (name,brand,stock,price,type_id,identificative_id) 
 	values ('Camiseta tipo polo','Oscar de la renta',50,102.99,1,1);
 insert into products (name,brand,stock,price,type_id,identificative_id) 
 	values ('Camiseta manga larga','Oscar de la renta',30,150.99,1,1);
+	insert into products (name,brand,stock,price,type_id,identificative_id) 
+	values ('Camiseta tipo polo','Oscar de la renta',50,102.99,1,1);
+insert into products (name,brand,stock,price,type_id,identificative_id) 
+	values ('Camiseta manga larga','Oscar de la renta',30,150.99,1,2);
+	insert into products (name,brand,stock,price,type_id,identificative_id) 
+	values ('Camiseta tipo polo','Oscar de la renta',50,102.99,1,2);
+insert into products (name,brand,stock,price,type_id,identificative_id) 
+	values ('Camiseta manga larga','Oscar de la renta',30,150.99,1,3);
+	insert into products (name,brand,stock,price,type_id,identificative_id) 
+	values ('Camiseta tipo polo','Oscar de la renta',50,102.99,1,3);
+insert into products (name,brand,stock,price,type_id,identificative_id) 
+	values ('Camiseta manga larga','Oscar de la renta',30,150.99,1,4);
