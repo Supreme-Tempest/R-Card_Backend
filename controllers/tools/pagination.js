@@ -53,9 +53,12 @@ const getNextPage = (page, limit, total) => {
 }
 
 const getPages = (size, total) => {
-    //total / size
     if (size > 0) {
-        return total / size;
+        let pages = parseInt(total / size);
+        if (total%size > 0){
+            pages++;
+        }
+        return pages;
     }
 
     return null
