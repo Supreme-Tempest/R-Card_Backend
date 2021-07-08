@@ -13,7 +13,7 @@ router.get('/product', function(req, res, next) {
 router.post('/productsPaginate', function(req, res, next) {
     console.log("requiere", req.body);
     productsPaginate.listProduct(req, res);
-});
+}); 
 
 router.get('/product/:product_type', function(req, res, next) {
     product.getByType(req.params.product_type, req, res);

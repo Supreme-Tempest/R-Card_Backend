@@ -8,8 +8,9 @@ router.get('/users', function(req, res, next) {
   user.getAll(req, res);
 });
 
-router.get('/usersPaginate', function(req, res, next) {
-  console.log("requiere", req.body);
+router.post('/usersPaginate', function(req, res, next) {
+  console.log("Si se pudo stark :'v")
+  //console.log("requiere", req.body);
   userssPaginate.listUser(req, res);
 });
 
