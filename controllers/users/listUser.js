@@ -1,4 +1,6 @@
 const User = require('../../models/users/user');
+const Role = require('../../models/users/role');
+const Workshop = require('../../models/workshop/workshop');
 const paginate = require('../tools/pagination');
 
 async function listUser(req, res) {
@@ -12,7 +14,11 @@ async function listUser(req, res) {
             search = {
                 where: {
                     ...filter
-                }
+                },
+                include: [
+                    { model: Role, as: 'role'},
+                    { model: Workshop, as: 'workshop'}
+                ]
             };
         }
 

@@ -44,7 +44,10 @@ const save = (item, req, res) => {
         product.create(item)
         .then((result)=>{
             //const data = results.dataValues;
-            return res.status(200).send(result);
+            return res.json({
+                success: true,
+                data: result,
+            });
         })
         .catch((e)=>{
             return res.status(400).send(e);

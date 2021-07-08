@@ -1,4 +1,5 @@
 const Workshop = require('../../models/workshop/workshop');
+const Municipio = require('../../models/workshop/municipio');
 const paginate = require('../tools/pagination');
 
 async function listWorkshop(req, res) {
@@ -12,7 +13,10 @@ async function listWorkshop(req, res) {
             search = {
                 where: {
                     ...filter
-                }
+                },
+                include: [
+                    { model: Municipio, as: 'municipio'},
+                ]
             };
         }
 
