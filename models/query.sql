@@ -10,7 +10,7 @@ select * from identificatives;
 */
 
 /*
-drop table verification_tokens;
+//drop table verification_tokens;
 drop table users;
 drop table roles;
 drop table workshops;
