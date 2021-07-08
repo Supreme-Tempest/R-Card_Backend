@@ -55,7 +55,7 @@ const getByType = (type, req, res) => {
 
 
 const save = (item, req, res) => {
-    console.log('product save: ', req.body);
+    console.log('product save: ', item);
     try {
         product.create(item)
         .then((result)=>{
@@ -80,9 +80,9 @@ const save = (item, req, res) => {
 };
 
 const update = (item, req, res) => {
-    console.log('product update: ', req.body);
+    console.log('product update: ', item);
     try {
-        product.update(item)
+        product.update(item, { where: { id: item.id}})
         .then((result)=>{
             return res.status(200).json({
                 success: true,
@@ -90,6 +90,7 @@ const update = (item, req, res) => {
             });
         })
         .catch((e)=>{
+            console.log("error", e);
             return res.status(400).json({
                 success: false,
                 error: e,

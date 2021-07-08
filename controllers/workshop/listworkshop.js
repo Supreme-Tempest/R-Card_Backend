@@ -9,17 +9,18 @@ async function listWorkshop(req, res) {
         let search = {};
 
         // add the search term to the search object
-        if (filter) {
-            search = {
-                where: {
-                    ...filter
-                },
-                include: [
-                    { model: Municipio, as: 'municipio'},
-                ]
-            };
-        }
-
+        search = {
+            where: {
+                ...filter
+            },
+            include: [
+                { model: Municipio, as: 'municipio'},
+            ],
+            order: [
+                ['id', 'ASC'],
+            ],
+        };
+        
         // transform function that can be passed to the  paginate method
         const transform = (records) => {
             return records.map((record) => {

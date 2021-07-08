@@ -48,7 +48,7 @@ const save = (item, req, res) => {
 const update = (item, req, res) => {
     console.log('role update: ', req.body);
     try {
-        product.update(item)
+        product.update(item, { where: { id: item.id}})
         .then((result)=>{
             //const data = results.dataValues;
             return res.status(200).send(result);

@@ -8,13 +8,14 @@ async function listClient(req, res) {
         let search = {};
 
         // add the search term to the search object
-        if (filter) {
-            search = {
-                where: {
-                    state: filter.state
-                }
-            };
-        }
+        search = {
+            where: {
+                ...filter
+            },
+            order: [
+                ['id', 'ASC'],
+            ],
+        };
 
         // transform function that can be passed to the  paginate method
         const transform = (records) => {

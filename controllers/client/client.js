@@ -39,7 +39,7 @@ const getAll = (req, res) => {
 };
 
 const save = (item, req, res) => {
-    console.log('client save: ', req.body);
+    console.log('client save: ', item);
     try {
         client.create(item)
         .then((result)=>{
@@ -64,7 +64,7 @@ const save = (item, req, res) => {
 };
 
 const update = (item, req, res) => {
-    console.log('client update: ', req.body);
+    console.log('client update: ', item);
     try {
         client.update(item)
         .then((result)=>{

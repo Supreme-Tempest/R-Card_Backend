@@ -17,7 +17,10 @@ async function listProduct(req, res) {
             include: [
                 { model: ProductType, as: 'type'},
                 { model: Identificative, as: 'identificative'}
-            ]
+            ],
+            order: [
+                ['id', 'ASC'],
+            ],
         };
 
 

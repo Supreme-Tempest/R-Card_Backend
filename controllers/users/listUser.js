@@ -10,18 +10,19 @@ async function listUser(req, res) {
         let search = {};
 
         // add the search term to the search object
-        if (filter) {
-            search = {
-                where: {
-                    ...filter
-                },
-                include: [
-                    { model: Role, as: 'role'},
-                    { model: Workshop, as: 'workshop'}
-                ]
-            };
-        }
-
+        search = {
+            where: {
+                ...filter
+            },
+            include: [
+                { model: Role, as: 'role'},
+                { model: Workshop, as: 'workshop'}
+            ],
+            order: [
+                ['id', 'ASC'],
+            ],
+        };
+        
         // transform function that can be passed to the  paginate method
         const transform = (records) => {
             return records.map((record) => {

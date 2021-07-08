@@ -39,7 +39,7 @@ const getByType = (type, req, res) => {
 
 
 const save = (item, req, res) => {
-    console.log('product_identificative save: ', req.body);
+    console.log('product_identificative save: ', item);
     try {
         product.create(item)
         .then((result)=>{
@@ -56,9 +56,9 @@ const save = (item, req, res) => {
 };
 
 const update = (item, req, res) => {
-    console.log('product_identificative update: ', req.body);
+    console.log('product_identificative update: ', item);
     try {
-        product.update(item)
+        product.update(item, { where: { id: item.id}})
         .then((result)=>{
             //const data = results.dataValues;
             return res.status(200).send(result);

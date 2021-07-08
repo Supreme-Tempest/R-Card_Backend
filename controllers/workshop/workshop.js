@@ -65,7 +65,7 @@ const getByMunicipio = (municipio, req, res) => {
 
 
 const save = (item, req, res) => {
-    console.log('workshop save: ', req.body);
+    console.log('workshop save: ', item);
     try {
         workshop.create(item)
         .then((result)=>{
@@ -90,9 +90,9 @@ const save = (item, req, res) => {
 };
 
 const update = (item, req, res) => {
-    console.log('workshop update: ', req.body);
+    console.log('workshop update: ', item);
     try {
-        workshop.update(item)
+        workshop.update(item, { where: { id: item.id}})
         .then((result)=>{
             return res.status(200).json({
                 success: true,
