@@ -5,7 +5,7 @@ const transform = (records) => {
         return {
             id: record.id,
             name: record.name,
-            municipio: record.municipio,
+            municipio: record.municipio_id,
         }
     });
 }
@@ -39,7 +39,7 @@ const getByMunicipio = (municipio, req, res) => {
     console.log('workshop by municipio: ', req.body);
     try {
         workshop.findAll({
-            where: { municipio: municipio }, 
+            where: { municipio_id: municipio }, 
             //include: Department,
         })
         .then((result)=>{

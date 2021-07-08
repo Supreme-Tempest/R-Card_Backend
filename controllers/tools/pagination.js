@@ -14,7 +14,7 @@ async function paginate(model, pageSize, pageLimit, search, transform) {
             options = {...options, ...search};
         }
 
-        console.log('options: ', options);
+        //console.log('options: ', options);
 
         // take in the model, take in the options
 

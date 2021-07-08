@@ -5,7 +5,7 @@ const transform = (records) => {
         return {
             id: record.id,
             name: record.name,
-            department: record.department,
+            department: record.department_id,
         }
     });
 }
@@ -31,7 +31,7 @@ const getByDepartment = (department, req, res) => {
     console.log('municipios by department: ', req.body);
     try {
         municipio.findAll({
-            where: { department: department }, 
+            where: { department_id: department }, 
             //include: Department,
         })
         .then((result)=>{

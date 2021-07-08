@@ -1,9 +1,9 @@
-const product = require('../../models/product/productType');
+const IdentificativeType = require('../../models/product/identificativeType');
 
 const getAll = (req, res) => {
-    console.log('product_type: ', req.body);
+    console.log('identificative_type: ', req.body);
     try {
-        product.findAll()
+        IdentificativeType.findAll()
         .then((result)=>{
             //const data = results.dataValues;
             return res.status(200).send(result);
@@ -12,35 +12,15 @@ const getAll = (req, res) => {
             return res.status(400).send(e);
         })  ;
     } catch (err) {
-        console.log('product_type: ', err.message);
-        return res.status(500).send(err);
-    }
-};
-
-const getByType = (type, req, res) => {
-    console.log('product by type: ', req.body);
-    try {
-        product.findAll({
-            where: { type_id: type }, 
-            //include: Department,
-        })
-        .then((result)=>{
-            //const data = results.dataValues;
-            return res.status(200).send(result);
-        })
-        .catch((e)=>{
-            return res.status(400).send(e);
-        })  ;
-    } catch (err) {
-        console.log('product by type: ', err.message);
+        console.log('identificative_type: ', err.message);
         return res.status(500).send(err);
     }
 };
 
 const save = (item, req, res) => {
-    console.log('product_type save: ', req.body);
+    console.log('identificative_type save: ', req.body);
     try {
-        product.create(item)
+        IdentificativeType.create(item)
         .then((result)=>{
             //const data = results.dataValues;
             return res.status(200).send(result);
@@ -49,15 +29,15 @@ const save = (item, req, res) => {
             return res.status(400).send(e);
         })  ;
     } catch (err) {
-        console.log('product_type save: ', err.message);
+        console.log('identificative_type save: ', err.message);
         return res.status(500).send(err);
     }
 };
 
 const update = (item, req, res) => {
-    console.log('product_type update: ', req.body);
+    console.log('identificative_type update: ', req.body);
     try {
-        product.update(item)
+        IdentificativeType.update(item)
         .then((result)=>{
             //const data = results.dataValues;
             return res.status(200).send(result);
@@ -66,14 +46,13 @@ const update = (item, req, res) => {
             return res.status(400).send(e);
         })  ;
     } catch (err) {
-        console.log('product_type update: ', err.message);
+        console.log('identificative_type update: ', err.message);
         return res.status(500).send(err);
     }
 };
 
 module.exports = {
     getAll: getAll,
-    getByType: getByType,
     save: save,
     update: update,  
 };

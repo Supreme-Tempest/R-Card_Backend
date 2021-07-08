@@ -39,7 +39,7 @@ async function listProduct(req, res) {
         console.log("preview to product");
         // paginate method that takes in the model, page, limit, search object, order and transform
         const result = await paginate(product, page, size, search, transform)
-        console.log("products: ", result);
+        //console.log("products: ", result);
         return res.status(200).send({
             success: true,
             message: 'Fetched products',

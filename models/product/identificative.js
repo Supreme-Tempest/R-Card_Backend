@@ -18,7 +18,7 @@ const Identificative  = sequelize.define('identificatives', {
         allowNull: false,
         onUpdate: "cascade",
         onDelete: "cascade",
-        references: { model: "product_types", key: "id" }
+        references: { model: "identificative_types", key: "id" }
     }
 },{ timestamps: false });
 

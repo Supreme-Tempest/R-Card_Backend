@@ -21,7 +21,7 @@ const getByType = (type, req, res) => {
     console.log('product by type: ', req.body);
     try {
         product.findAll({
-            where: { productType: type }, 
+            where: { type_id: type }, 
             //include: Department,
         })
         .then((result)=>{

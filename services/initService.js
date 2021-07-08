@@ -65,6 +65,7 @@ function syncTables() {
         'users/user',
         'users/verificationToken',
         'client/client',
+        'product/identificativeType',
         'product/productType',
         'product/identificative',
         'product/product'

@@ -341,13 +341,13 @@ insert into clients (number_card, dui, name,creation_date, birthday,state)
 	values ('3000 5874 3659','00124587-9','Marvin Josue Lopez',current_date,current_date,TRUE);
 	
 
-
-insert into product_types(name) values ('Camisa');
+insert into identificative_types(name) values ('Talla Camisa');
 insert into identificatives(name,type_id) values ('Talla M',1);
 insert into identificatives(name,type_id) values ('Talla S',1);
 insert into identificatives(name,type_id) values ('Talla L',1);
 insert into identificatives(name,type_id) values ('Talla XL',1);
 insert into identificatives(name,type_id) values ('Talla XS',1);
+insert into product_types(name,type_id) values ('Camisa',1);
 
 insert into products (name,brand,stock,price,type_id,identificative_id) 
 	values ('Camiseta tipo polo','Oscar de la renta',50,102.99,1,1);
