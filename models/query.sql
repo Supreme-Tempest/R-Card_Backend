@@ -4,7 +4,11 @@ select * from users;
 select * from verification_tokens;
 select * from departments;
 select * from municipios;
+select * from products;
+select * from product_types;
+select * from identificatives;
 */
+
 /*
 drop table verification_tokens;
 drop table users;
@@ -335,3 +339,13 @@ insert into clients (number_card, dui, name,creation_date, birthday,state)
 	values ('3000 5874 4826','00124587-9','Jose Luis Gonzales',current_date,current_date,TRUE);
 insert into clients (number_card, dui, name,creation_date, birthday,state) 
 	values ('3000 5874 3659','00124587-9','Marvin Josue Lopez',current_date,current_date,TRUE);
+	
+
+
+insert into product_types(name) values ('Talla M');
+insert into identificatives(name,type_id) values ('Talla M',1);
+
+insert into products (name,brand,stock,price,type_id,identificative_id) 
+	values ('Camiseta tipo polo','Oscar de la renta',50,102.99,1,1);
+insert into products (name,brand,stock,price,type_id,identificative_id) 
+	values ('Camiseta manga larga','Oscar de la renta',30,150.99,1,1);
