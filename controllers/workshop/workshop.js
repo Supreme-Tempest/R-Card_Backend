@@ -24,9 +24,11 @@ const getAll = (req, res) => {
         })
         .then((result)=>{
             //console.log("workshops fount:", result);
+            let data = transform(result)
+            //console.log("workshops fount:", data);
             return res.status(200).json({
                 success: true,
-                data: transform(result),
+                data: data,
             });
         })
         .catch((e)=>{
