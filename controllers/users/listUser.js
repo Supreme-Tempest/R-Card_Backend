@@ -10,6 +10,7 @@ async function listUser(req, res) {
         const { page, size, filter } = req.body;
         //let search = {};
         // add the search term to the search object
+        console.log("decoded: ", req.decoded.user);
         let search = {
             where: {
                 ...filter
