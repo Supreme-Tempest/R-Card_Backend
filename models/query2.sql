@@ -5,6 +5,9 @@ insert into roles (role, name, levelaccess)
 	values ('manager', 'gerente', 3);
 
 insert into roles (role, name, levelaccess) 
+	values ('managerAdmin', 'gerente General', 4);
+
+insert into roles (role, name, levelaccess) 
 	values ('admin', 'administrador', 5);
 
 insert into users
