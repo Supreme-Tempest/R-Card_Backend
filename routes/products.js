@@ -10,7 +10,7 @@ router.get('/product', function(req, res, next) {
     product.getAll(req, res);
 });
 
-router.post('/productsPaginate', function(req, res, next) {
+router.get('/productsPaginate', function(req, res, next) {
     console.log("requiere", req.body);
     productsPaginate.listProduct(req, res);
 }); 
