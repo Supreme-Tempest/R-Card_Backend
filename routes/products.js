@@ -75,6 +75,7 @@ router.get('/identificative', function(req, res, next) {
 });
 
 router.get('/identificative/:type', function(req, res, next) {
+    console.log("hola perrooooooooooooooooooooooooo");
     identificatice.getByType(req.params.type,req, res);
 });
 
