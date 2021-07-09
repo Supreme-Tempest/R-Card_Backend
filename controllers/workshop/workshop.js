@@ -12,7 +12,7 @@ const transform = (records) => {
 }
 
 const getAll = (req, res) => {
-    console.log('workshop getAll: ', req.body);
+    console.log('workshop getAll');
     try {
         workshop.findAll({
             include: [
@@ -23,7 +23,7 @@ const getAll = (req, res) => {
             ],
         })
         .then((result)=>{
-            console.log("workshops fount:", result);
+            //console.log("workshops fount:", result);
             return res.status(200).json({
                 success: true,
                 data: transform(result),
@@ -45,7 +45,7 @@ const getAll = (req, res) => {
 };
 
 const getByMunicipio = (municipio, req, res) => {
-    console.log('workshop by municipio: ', req.body);
+    console.log('workshop by municipio: ', municipio);
     try {
         workshop.findAll({
             where: { municipio_id: municipio }, 
