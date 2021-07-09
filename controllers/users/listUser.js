@@ -10,6 +10,7 @@ async function listUser(req, res) {
         const { page, size, filter } = req.body;
         //let search = {};
         // add the search term to the search object
+        const levelAccess = req.decoded.user.role.levelaccess;
         let search = {
             where: {
                 ...filter
@@ -19,11 +20,11 @@ async function listUser(req, res) {
                 { 
                     model: Role, 
                     as: 'role', 
-                    where: { levelaccess: { [Op.lte]: 5}}, // <= 5
+                    where: { levelaccess: { [Op.lte]: levelAccess}}, // <= 5
                 }
             ],
             order: [
-                ['id', 'ASC'],
+                ['username', 'ASC'],
             ],
         };
         
@@ -36,15 +37,16 @@ async function listUser(req, res) {
                     lastname:  record.lastname,
                     workshop: record.workshop,
                     active: record.active,
-                    role: role.role,
+                    role: record.role,
                 }
             });
         }
 
-        console.log("preview to user");
+            //console.log("preview to user", search);
+            //console.log("levelaces: ", req.decoded);
         // paginate method that takes in the model, page, limit, search object, order and transform
         const result = await paginate(User, page, size, search, transform, res)
-        console.log("users: ", result);
+        //console.log("users: ", result);
         return res.status(200).send({
             success: true,
             message: 'Fetched users',

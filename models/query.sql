@@ -386,3 +386,30 @@ insert into products (name,brand,stock,price,type_id,identificative_id)
 	values ('Camiseta tipo polo','Oscar de la renta',50,102.99,1,3);
 insert into products (name,brand,stock,price,type_id,identificative_id) 
 	values ('Camiseta manga larga','Oscar de la renta',30,150.99,1,4);
+
+insert into users
+	(username, password, name, lastname, workshop_id, active, role_id, lastlogin, created, updated) 
+	values ('admin2',
+			'$2a$10$3IYgxcX6i.qEOheOSztYXO/GrxLPVFKRUvB94n7ACjmpGZxC4ORMS', 
+			'El admin 2', 'master 2', 1, true, 'admin', null, current_date, current_date);
+insert into users
+	(username, password, name, lastname, workshop_id, active, role_id, lastlogin, created, updated) 
+	values ('admin3',
+			'$2a$10$3IYgxcX6i.qEOheOSztYXO/GrxLPVFKRUvB94n7ACjmpGZxC4ORMS', 
+			'El admin', 'master', 1, true, 'admin', null, current_date, current_date);
+insert into users
+	(username, password, name, lastname, workshop_id, active, role_id, lastlogin, created, updated) 
+	values ('manager',
+			'$2a$10$3IYgxcX6i.qEOheOSztYXO/GrxLPVFKRUvB94n7ACjmpGZxC4ORMS', 
+			'El admin', 'master', 1, true, 'admin', null, current_date, current_date);
+insert into users
+	(username, password, name, lastname, workshop_id, active, role_id, lastlogin, created, updated) 
+	values ('manager 2',
+			'$2a$10$3IYgxcX6i.qEOheOSztYXO/GrxLPVFKRUvB94n7ACjmpGZxC4ORMS', 
+			'El admin', 'master', 1, true, 'admin', null, current_date, current_date);
+insert into users
+	(username, password, name, lastname, workshop_id, active, role_id, lastlogin, created, updated) 
+	values ('seller',
+			'$2a$10$3IYgxcX6i.qEOheOSztYXO/GrxLPVFKRUvB94n7ACjmpGZxC4ORMS', 
+			'El admin', 'master', 1, true, 'admin', null, current_date, current_date);
+

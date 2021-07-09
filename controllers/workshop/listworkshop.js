@@ -6,10 +6,9 @@ async function listWorkshop(req, res) {
     try {
         // get the query params
         const { page, size, filter } = req.body;
-        let search = {};
 
         // add the search term to the search object
-        search = {
+        let search = {
             where: {
                 ...filter
             },
@@ -32,7 +31,8 @@ async function listWorkshop(req, res) {
             });
         }
 
-        console.log("preview to workshop");
+        console.log("preview to workshop", search);
+        console.log("preview to workshop", req.body);
         // paginate method that takes in the model, page, limit, search object, order and transform
         const result = await paginate(Workshop, page, size, search, transform, res)
         console.log("workshops: ", result);

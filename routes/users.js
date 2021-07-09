@@ -15,18 +15,12 @@ router.get('/usersPaginate', function(req, res, next) {
 });
 
 router.post('/users', function(req, res, next) {
-  data = {
-      name: req.body.name,
-  }
-  user.save(data, req, res);
+  user.save(req, res);
 });
 
-router.put('/users', function(req, res, next) {
-  data = {
-      id: req.body.id,
-      name: req.body.name,
-  }
-  user.update(data, req, res);
+router.put('/users', (req, res, next) => {
+  console.log("users PUT");
+  user.update(req, res);
 });
 
 router.get('/roles', function(req, res, next) {

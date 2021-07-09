@@ -10,6 +10,10 @@ router.get('/product', function(req, res, next) {
     product.getAll(req, res);
 });
 
+router.get('/productShoping', function(req, res, next) {
+    product.getAllSum(req, res);
+});
+
 router.get('/productsPaginate', function(req, res, next) {
     console.log("requiere", req.body);
     productsPaginate.listProduct(req, res);
@@ -71,11 +75,11 @@ router.put('/type', function(req, res, next) {
 
 
 router.get('/identificative', function(req, res, next) {
+    if (req.body.type) {
+        console.log('aqui prrro');
+        identificatice.getByType(req.body.type,req, res);
+    }
     identificatice.getAll(req, res);
-});
-
-router.get('/identificative/:type', function(req, res, next) {
-    identificatice.getByType(req.params.type,req, res);
 });
 
 router.post('/identificative', function(req, res, next) {

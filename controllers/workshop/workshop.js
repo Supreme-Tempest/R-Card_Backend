@@ -1,23 +1,34 @@
 const workshop = require('../../models/workshop/workshop');
+const Municipio = require('../../models/workshop/municipio');
 
 const transform = (records) => {
     return records.map((record) => {
         return {
             id: record.id,
             name: record.name,
-            municipio: record.municipio_id,
+            municipio: record.municipio,
         }
     });
 }
 
 const getAll = (req, res) => {
-    console.log('workshop: ', req.body);
+    console.log('workshop getAll');
     try {
-        workshop.findAll()
+        workshop.findAll({
+            include: [
+                { model: Municipio, as: 'municipio'},
+            ],
+            order: [
+                ['id', 'ASC'],
+            ],
+        })
         .then((result)=>{
+            //console.log("workshops fount:", result);
+            let data = transform(result)
+            //console.log("workshops fount:", data);
             return res.status(200).json({
                 success: true,
-                data: result,
+                data: data,
             });
         })
         .catch((e)=>{
@@ -36,11 +47,16 @@ const getAll = (req, res) => {
 };
 
 const getByMunicipio = (municipio, req, res) => {
-    console.log('workshop by municipio: ', req.body);
+    console.log('workshop by municipio: ', municipio);
     try {
         workshop.findAll({
             where: { municipio_id: municipio }, 
-            //include: Department,
+            include: [
+                { model: Municipio, as: 'municipio'},
+            ],
+            order: [
+                ['id', 'ASC'],
+            ],
         })
         .then((result)=>{
             return res.status(200).json({

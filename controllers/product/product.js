@@ -1,4 +1,7 @@
 const product = require('../../models/product/product');
+const { literal } = require("sequelize");
+const pool = require('../../services/initService').pool;
+
 
 const getAll = (req, res) => {
     console.log('product: ', req.body);
@@ -16,6 +19,36 @@ const getAll = (req, res) => {
                 error: e,
             });
         });
+    } catch (err) {
+        console.log('product: ', err.message);
+        return res.status(500).json({
+            success: false,
+            error: err,
+        });
+    }
+};
+
+const getAllSum = (req, res) => {
+    console.log('productSum: ', req.body);
+    try {
+        let updateLastLogin = `Select SUM(p.price * p.stock) as total,
+                                count(p.id) as products 
+        from products as p`;
+
+        pool.query(updateLastLogin, (err, results) => {
+            console.log("result", results.rows);
+            if (results) {
+                return res.status(200).json({
+                    success: true,
+                    data: results.rows,
+                });
+            } else {
+                return res.status(400).json({
+                    success: false,
+                    error: e,
+                });
+            }
+        })
     } catch (err) {
         console.log('product: ', err.message);
         return res.status(500).json({
@@ -107,6 +140,7 @@ const update = (item, req, res) => {
 
 module.exports = {
     getAll: getAll,
+    getAllSum: getAllSum,
     getByType: getByType,
     save: save,
     update: update,  
