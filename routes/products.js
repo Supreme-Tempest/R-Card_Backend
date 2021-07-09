@@ -10,6 +10,10 @@ router.get('/product', function(req, res, next) {
     product.getAll(req, res);
 });
 
+router.get('/productShoping', function(req, res, next) {
+    product.getAllSum(req, res);
+});
+
 router.get('/productsPaginate', function(req, res, next) {
     console.log("requiere", req.body);
     productsPaginate.listProduct(req, res);
