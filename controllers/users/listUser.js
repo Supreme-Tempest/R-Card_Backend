@@ -8,10 +8,9 @@ async function listUser(req, res) {
     try {
         // get the query params
         const { page, size, filter } = req.body;
-        let search = {};
-
+        //let search = {};
         // add the search term to the search object
-        search = {
+        let search = {
             where: {
                 ...filter
             },
