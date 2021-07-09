@@ -32,7 +32,7 @@ const getAllSum = (req, res) => {
     console.log('productSum: ', req.body);
     try {
         let updateLastLogin = `Select SUM(p.price * p.stock) as total,
-                                SUM(p.id) as products 
+                                count(p.id) as products 
         from products as p`;
 
         pool.query(updateLastLogin, (err, results) => {
