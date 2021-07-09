@@ -35,7 +35,8 @@ const User  = sequelize.define('users', {
         references: { model: "workshops", key: "id" }
     },
     active: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
     },
     role_id: {
         type: Sequelize.STRING,

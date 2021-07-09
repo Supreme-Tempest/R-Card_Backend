@@ -2,6 +2,7 @@ const User = require('../../models/users/user');
 const Role = require('../../models/users/role');
 const Workshop = require('../../models/workshop/workshop');
 const paginate = require('../tools/pagination');
+const { Op } = require("sequelize");
 
 async function listUser(req, res) {
     try {
@@ -15,8 +16,12 @@ async function listUser(req, res) {
                 ...filter
             },
             include: [
-                { model: Role, as: 'role'},
-                { model: Workshop, as: 'workshop'}
+                { model: Workshop, as: 'workshop'},
+                { 
+                    model: Role, 
+                    as: 'role', 
+                    where: { levelaccess: { [Op.lte]: 5}}, // <= 5
+                }
             ],
             order: [
                 ['id', 'ASC'],
