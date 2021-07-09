@@ -67,7 +67,9 @@ function syncTables() {
         'product/identificativeType',
         'product/productType',
         'product/identificative',
-        'product/product'
+        'product/product',
+        'client/facture',
+        'client/productSale',
     ];
 
     async.eachSeries(order, function (file, callback) {
