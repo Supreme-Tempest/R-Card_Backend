@@ -71,7 +71,7 @@ router.put('/type', function(req, res, next) {
 
 
 router.get('/identificative', function(req, res, next) {
-    if (req.params.type) {
+    if (req.body.type) {
         console.log('aqui prrro');
     }
     identificatice.getAll(req, res);
