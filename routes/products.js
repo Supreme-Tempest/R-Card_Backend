@@ -71,15 +71,11 @@ router.put('/type', function(req, res, next) {
 
 
 router.get('/identificative', function(req, res, next) {
-    if (req.params.type) {
+    if (req.body.type) {
         console.log('aqui prrro');
+        identificatice.getByType(req.body.type,req, res);
     }
     identificatice.getAll(req, res);
-});
-
-router.get('/identificative/:type', function(req, res, next) {
-    console.log("hola perrooooooooooooooooooooooooo");
-    identificatice.getByType(req.params.type,req, res);
 });
 
 router.post('/identificative', function(req, res, next) {
