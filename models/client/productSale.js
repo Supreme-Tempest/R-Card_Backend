@@ -28,12 +28,10 @@ const ProductSale  = sequelize.define('products_sales', {
     amount: {
         type: DataTypes.DOUBLE,
         allowNull: false,
-        unique: true
     },
     total: {
         type: DataTypes.DOUBLE,
         allowNull: false,
-        unique: true
     },
 }, { timestamps: false });
 

@@ -20,7 +20,6 @@ const Facture  = sequelize.define('factures', {
     total: {
         type: DataTypes.DOUBLE,
         allowNull: false,
-        unique: true
     },
     created: {
         allowNull: false,
