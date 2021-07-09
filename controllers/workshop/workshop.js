@@ -32,6 +32,7 @@ const getAll = (req, res) => {
             });
         })
         .catch((e)=>{
+            //console.log("err", e)
             return res.status(400).json({
                 success: false,
                 error: e,
