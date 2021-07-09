@@ -15,10 +15,7 @@ router.get('/usersPaginate', function(req, res, next) {
 });
 
 router.post('/users', function(req, res, next) {
-  data = {
-      name: req.body.name,
-  }
-  user.save(data, req, res);
+  user.save(req, res);
 });
 
 router.put('/users', function(req, res, next) {

@@ -5,12 +5,13 @@ const User = require('../../models/users/user');
 const Role = require('../../models/users/role');
 const Workshop = require('../../models/workshop/workshop');
 const tokenkey =  process.env.TOKEN_KEY;
-const passwordKey = process.env.PASSWORD_KEY;
+const passwordKey = parseInt(process.env.PASSWORD_KEY);
 
 const Register = async (req, res) => {
     console.log("register ,", req.body);
     try {
         let { username, password, workshop, role, name, lastname } = req.body;
+        console.log("prepassword ,", password);
         password = bcrypt.hashSync(password, passwordKey);
         console.log ('passwrod cifrado:', password)
         //user creation
@@ -21,12 +22,12 @@ const Register = async (req, res) => {
                 password: password, 
                 name: name,
                 lastname: lastname,
-                workshop: workshop, 
-                role: role,
+                workshop_id: workshop, 
+                role_id: role,
                 active: true,
                 lastlogin: null,
-                createdAt: new Date(),
-                updatedAt: new Date(),
+                created: new Date(),
+                updated: new Date(),
             },
         );
         return res.status(200).send(`You have Registered Successfully`)
