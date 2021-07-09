@@ -13,7 +13,7 @@ async function listClient(req, res) {
                 ...filter
             },
             order: [
-                ['id', 'ASC'],
+                ['number_card', 'ASC'],
             ],
         };
 

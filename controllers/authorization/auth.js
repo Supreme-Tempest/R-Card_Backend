@@ -4,10 +4,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../../models/users/user');
 const Role = require('../../models/users/role');
 const Workshop = require('../../models/workshop/workshop');
-//const cryptoRandomString = require('crypto-random-string');
-//const VerificationToken = require('../../models/users/verificationToken');
-//const verificationService = require('../../services/verificationService');
-//const Roles = require('../../tools/roles');
 const tokenkey =  process.env.TOKEN_KEY;
 
 async function validateToken(user) {
