@@ -2,9 +2,16 @@ var express = require('express');
 var router = express.Router();
 const role = require('../controllers/users/roles');
 const user = require('../controllers/users/users');
+const userssPaginate = require('../controllers/users/listUser');
 
 router.get('/users', function(req, res, next) {
   user.getAll(req, res);
+});
+
+router.get('/usersPaginate', function(req, res, next) {
+  console.log("Si se pudo stark :'v")
+  //console.log("requiere", req.body);
+  userssPaginate.listUser(req, res);
 });
 
 router.post('/users', function(req, res, next) {

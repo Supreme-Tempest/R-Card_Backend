@@ -21,7 +21,7 @@ const getByType = (type, req, res) => {
     console.log('product by type: ', req.body);
     try {
         product.findAll({
-            where: { productType: type }, 
+            where: { type_id: type }, 
             //include: Department,
         })
         .then((result)=>{
@@ -39,9 +39,9 @@ const getByType = (type, req, res) => {
 
 
 const save = (item, req, res) => {
-    console.log('product_identificative save: ', req.body);
+    console.log('product_identificative save: ', item);
     try {
-        product.save(item)
+        product.create(item)
         .then((result)=>{
             //const data = results.dataValues;
             return res.status(200).send(result);
@@ -56,9 +56,9 @@ const save = (item, req, res) => {
 };
 
 const update = (item, req, res) => {
-    console.log('product_identificative update: ', req.body);
+    console.log('product_identificative update: ', item);
     try {
-        product.update(item)
+        product.update(item, { where: { id: item.id}})
         .then((result)=>{
             //const data = results.dataValues;
             return res.status(200).send(result);

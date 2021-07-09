@@ -1,12 +1,22 @@
 const municipio = require('../../models/workshop/municipio');
 
+const transform = (records) => {
+    return records.map((record) => {
+        return {
+            id: record.id,
+            name: record.name,
+            department: record.department_id,
+        }
+    });
+}
+
 const getAll = (req, res) => {
     console.log('municipios: ', req.body);
     try {
         municipio.findAll()
         .then((result)=>{
             //const data = results.dataValues;
-            return res.status(200).send(result);
+            return res.status(200).send(transform(result));
         })
         .catch((e)=>{
             return res.status(400).send(e);
@@ -21,12 +31,12 @@ const getByDepartment = (department, req, res) => {
     console.log('municipios by department: ', req.body);
     try {
         municipio.findAll({
-            where: { department: department }, 
+            where: { department_id: department }, 
             //include: Department,
         })
         .then((result)=>{
             //const data = results.dataValues;
-            return res.status(200).send(result);
+            return res.status(200).send(transform(result));
         })
         .catch((e)=>{
             return res.status(400).send(e);

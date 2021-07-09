@@ -3,6 +3,7 @@ const pool = require('../../services/initService').pool;
 const jwt = require('jsonwebtoken');
 const User = require('../../models/users/user');
 const Role = require('../../models/users/role');
+const Workshop = require('../../models/workshop/workshop');
 //const cryptoRandomString = require('crypto-random-string');
 //const VerificationToken = require('../../models/users/verificationToken');
 //const verificationService = require('../../services/verificationService');
@@ -84,11 +85,12 @@ module.exports = function (app) {
             const results = await User.findOne({ 
                 where: { username: username },
                 include: [
-                    { model: Role, as: 'roles'}
+                    { model: Role, as: 'role'},
+                    { model: Workshop, as: 'workshop'}
                 ]
             });
             console.log('user login:', results.dataValues);
-            console.log('user role: ', results.dataValues.roles.dataValues);
+            console.log('user role: ', results.dataValues.role.dataValues);
             //console.log('result:', results);
             if (!results) {
                 return res.status(401).send('Invalid login credentials');

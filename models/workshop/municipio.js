@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 const { sequelize } = require('../../services/initService');
-const workshop = require('../workshop/workshop');
-//const department = require('./department');
+//const Workshop = require('./workshop');
+const Department = require('./department');
 
 const Municipio  = sequelize.define('municipios', {
     id: {
@@ -15,7 +15,7 @@ const Municipio  = sequelize.define('municipios', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    department: {
+    department_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onUpdate: "cascade",
@@ -24,7 +24,8 @@ const Municipio  = sequelize.define('municipios', {
     }
 }, { timestamps: false });
 
-//Municipio.hasOne(department, {as: 'department', foreignKey: 'department', targetKey: 'department'} );
-Municipio.hasMany(workshop, { as: 'workshops', foreignKey: 'municipio', foreignKeyConstraint: true });
+Municipio.belongsTo(Department,  { as: 'department',foreignKey: 'department_id' });
+//Municipio.belongsTo(department, {as: 'department', foreignKey: 'department'} );
+//Municipio.hasMany(workshop, { as: 'workshops', foreignKey: 'municipio' });
 
 module.exports = Municipio;

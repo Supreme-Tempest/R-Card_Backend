@@ -1,37 +1,26 @@
-const role = require('../../models/users/role');
-
-const transform = (records) => {
-    return records.map((record) => {
-        return {
-            role: record.role,
-            name: record.name,
-            levelaccess:  record.levelaccess,
-        }
-    });
-}
+const IdentificativeType = require('../../models/product/identificativeType');
 
 const getAll = (req, res) => {
-    console.log('role: ', req.body);
+    console.log('identificative_type: ', req.body);
     try {
-        role.findAll()
+        IdentificativeType.findAll()
         .then((result)=>{
             //const data = results.dataValues;
-            //console.log(result);
-            return res.status(200).send(transform(result));
+            return res.status(200).send(result);
         })
         .catch((e)=>{
             return res.status(400).send(e);
         })  ;
     } catch (err) {
-        console.log('role: ', err.message);
+        console.log('identificative_type: ', err.message);
         return res.status(500).send(err);
     }
 };
 
 const save = (item, req, res) => {
-    console.log('role save: ', req.body);
+    console.log('identificative_type save: ', item);
     try {
-        role.create(item)
+        IdentificativeType.create(item)
         .then((result)=>{
             //const data = results.dataValues;
             return res.status(200).send(result);
@@ -40,15 +29,15 @@ const save = (item, req, res) => {
             return res.status(400).send(e);
         })  ;
     } catch (err) {
-        console.log('role save: ', err.message);
+        console.log('identificative_type save: ', err.message);
         return res.status(500).send(err);
     }
 };
 
 const update = (item, req, res) => {
-    console.log('role update: ', req.body);
+    console.log('identificative_type update: ', item);
     try {
-        product.update(item, { where: { id: item.id}})
+        IdentificativeType.update(item, { where: { id: item.id}})
         .then((result)=>{
             //const data = results.dataValues;
             return res.status(200).send(result);
@@ -57,7 +46,7 @@ const update = (item, req, res) => {
             return res.status(400).send(e);
         })  ;
     } catch (err) {
-        console.log('role update: ', err.message);
+        console.log('identificative_type update: ', err.message);
         return res.status(500).send(err);
     }
 };

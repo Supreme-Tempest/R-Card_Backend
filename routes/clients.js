@@ -1,9 +1,15 @@
 var express = require('express');
 var router = express.Router();
 const client = require('../controllers/client/client');
+const clientPage = require('../controllers/client/listclient');
 
 router.get('/clients', function(req, res, next) {
     client.getAll(req, res);
+});
+
+router.get('/clientsPaginate', function(req, res, next) {
+    console.log("requiere", req.body);
+    clientPage.listClient(req, res);
 });
 
 router.post('/clients', function(req, res, next) {

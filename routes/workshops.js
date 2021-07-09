@@ -3,6 +3,7 @@ var router = express.Router();
 const department = require('../controllers/workshop/department');
 const municipio = require('../controllers/workshop/municipio');
 const workshop = require('../controllers/workshop/workshop');
+const workshopPaginate = require('../controllers/workshop/listworkshop');
 
 /* GET users listing. */
 router.get('/departments', function(req, res, next) {
@@ -20,6 +21,11 @@ router.get('/municipios/:department', function(req, res, next) {
 router.get('/workshop', function(req, res, next) {
     console.log('workshop get');
     workshop.getAll(req, res);
+});
+
+router.get('/workshopPagine', function(req, res, next) {
+    console.log("requiere", req.body);
+    workshopPaginate.listWorkshop(req, res);
 });
 
 router.get('/workshop/:municipio', function(req, res, next) {

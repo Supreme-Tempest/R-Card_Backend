@@ -59,12 +59,12 @@ function initSequelize() {
 function syncTables() {
     var order = [
         'workshop/department',
-        'users/role',
         'workshop/municipio',
         'workshop/workshop',
+        'users/role',
         'users/user',
-        'users/verificationToken',
         'client/client',
+        'product/identificativeType',
         'product/productType',
         'product/identificative',
         'product/product'

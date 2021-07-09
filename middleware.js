@@ -30,6 +30,7 @@ module.exports = function (app) {
 
             jwt.verify(token, tokenkey, (err, decoded) => {
                 if (err) {
+                    console.log('Token is not valid or expired');
                     return res.json({
                         success: false,
                         code: 4012,
@@ -37,6 +38,7 @@ module.exports = function (app) {
                     });
                 } else {
                     req.decoded = decoded;
+                    console.log("token true");
                     next();
                 }
             });

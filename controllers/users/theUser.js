@@ -1,19 +1,28 @@
-const role = require('../../models/users/role');
+const User = require('../../models/users/user');
 
 const transform = (records) => {
     return records.map((record) => {
         return {
-            role: record.role,
+            username: record.role,
             name: record.name,
-            levelaccess:  record.levelaccess,
+            lastname:  record.lastname,
+            role: record.role,
+            workshop: record.workshop,
+            active: record.active,
+            lastlogin: record.lastlogin,
         }
     });
 }
 
 const getAll = (req, res) => {
-    console.log('role: ', req.body);
+    console.log('user: ', req.body);
     try {
-        role.findAll()
+        role.findAll({
+            include: [
+                { model: Role, as: 'role'},
+                { model: Workshop, as: 'workshop'}
+            ],
+        })
         .then((result)=>{
             //const data = results.dataValues;
             //console.log(result);
