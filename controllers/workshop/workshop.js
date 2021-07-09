@@ -1,4 +1,5 @@
 const workshop = require('../../models/workshop/workshop');
+const Municipio = require('../../models/workshop/municipio');
 
 const transform = (records) => {
     return records.map((record) => {
@@ -11,7 +12,7 @@ const transform = (records) => {
 }
 
 const getAll = (req, res) => {
-    console.log('workshop: ', req.body);
+    console.log('workshop getAll: ', req.body);
     try {
         workshop.findAll({
             include: [
@@ -22,6 +23,7 @@ const getAll = (req, res) => {
             ],
         })
         .then((result)=>{
+            console.log("workshops fount:", result);
             return res.status(200).json({
                 success: true,
                 data: transform(result),
