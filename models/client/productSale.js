@@ -26,12 +26,12 @@ const ProductSale  = sequelize.define('products_sales', {
         references: { model: "products", key: "id" }
     },
     amount: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.DOUBLE,
         allowNull: false,
         unique: true
     },
     total: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.DOUBLE,
         allowNull: false,
         unique: true
     },
@@ -42,4 +42,4 @@ ProductSale.belongsTo(Product, { as: 'product',foreignKey: 'id' });
 //Role.hasMany(User, { as: 'users',foreignKey: 'role' });
 //User.hasOne(VerificationToken, { as: 'verificationtoken',foreignKey: 'username', foreignKeyConstraint: true });
 
-module.exports = Facture;
+module.exports = ProductSale;

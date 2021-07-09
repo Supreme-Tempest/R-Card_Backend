@@ -18,7 +18,7 @@ const Facture  = sequelize.define('factures', {
         references: { model: "clients", key: "number_card" }
     },
     total: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.DOUBLE,
         allowNull: false,
         unique: true
     },
