@@ -5,7 +5,7 @@ const transform = (records) => {
         return {
             id: record.id,
             name: record.name,
-            municipio: record.municipio_id,
+            municipio: record.municipio,
         }
     });
 }
@@ -13,11 +13,18 @@ const transform = (records) => {
 const getAll = (req, res) => {
     console.log('workshop: ', req.body);
     try {
-        workshop.findAll()
+        workshop.findAll({
+            include: [
+                { model: Municipio, as: 'municipio'},
+            ],
+            order: [
+                ['id', 'ASC'],
+            ],
+        })
         .then((result)=>{
             return res.status(200).json({
                 success: true,
-                data: result,
+                data: transform(result),
             });
         })
         .catch((e)=>{
@@ -40,7 +47,12 @@ const getByMunicipio = (municipio, req, res) => {
     try {
         workshop.findAll({
             where: { municipio_id: municipio }, 
-            //include: Department,
+            include: [
+                { model: Municipio, as: 'municipio'},
+            ],
+            order: [
+                ['id', 'ASC'],
+            ],
         })
         .then((result)=>{
             return res.status(200).json({
