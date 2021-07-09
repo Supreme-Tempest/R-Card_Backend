@@ -42,7 +42,8 @@ async function listUser(req, res) {
             });
         }
 
-        //console.log("preview to user", search);
+            //console.log("preview to user", search);
+            //console.log("levelaces: ", req.decoded);
         // paginate method that takes in the model, page, limit, search object, order and transform
         const result = await paginate(User, page, size, search, transform, res)
         //console.log("users: ", result);
