@@ -37,6 +37,14 @@ router.put('/clients', function(req, res, next) {
     client.update(data, req, res);
 });
 
+router.put('/clientState', function(req, res, next) {
+    data = {
+        card: req.body.card,
+        state: req.body.state,
+    }
+    client.updateStatus(data, req, res);
+});
+
 router.get('/facture', function(req, res, next) {
     if (req.body.client) {
         facture.getByClient(req.body.client, req, res);
