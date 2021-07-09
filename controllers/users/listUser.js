@@ -23,7 +23,7 @@ async function listUser(req, res) {
                 }
             ],
             order: [
-                ['id', 'ASC'],
+                ['username', 'ASC'],
             ],
         };
         
@@ -36,12 +36,12 @@ async function listUser(req, res) {
                     lastname:  record.lastname,
                     workshop: record.workshop,
                     active: record.active,
-                    role: role.role,
+                    role: record.role,
                 }
             });
         }
 
-        console.log("preview to user");
+        //console.log("preview to user", search);
         // paginate method that takes in the model, page, limit, search object, order and transform
         const result = await paginate(User, page, size, search, transform, res)
         console.log("users: ", result);
