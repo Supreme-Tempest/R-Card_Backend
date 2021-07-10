@@ -30,13 +30,14 @@ const validation = (element) => {
     return error.length != 0 ? error : null; 
 }
 
-const Register = async (req, res, flagNew) => {
+const Register = (req, res, flagNew) => {
     console.log("register ,", req.body);
     try {
         const levelAccess = req.decoded.user.role.levelaccess;
         let { username, password, workshop, role, name, lastname, roleAccess } = req.body;
         if ((roleAccess >= levelAccess) || !roleAccess) {
             return res.status(400).json({
+                success: false,
                 error: [{
                     message: { code: 40148, msg: 'nivel de acceso insuficiente para esta accion' },
                 }]
@@ -52,6 +53,7 @@ const Register = async (req, res, flagNew) => {
         })
         if (validate){
             return res.status(400).json({
+                success: false,
                 error: validate
             });
         }
@@ -62,7 +64,7 @@ const Register = async (req, res, flagNew) => {
         console.log('register', 'preparacion de creacion');
 
         if (!flagNew) {
-            const user = await User.create(
+            User.create(
                 { 
                     username: username,
                     password: password, 
@@ -75,10 +77,19 @@ const Register = async (req, res, flagNew) => {
                     created: new Date(),
                     updated: new Date(),
                 },
-            );
-            return res.status(200).send(`You have Registered Successfully`)
+            ).then((result)=>{
+                return res.status(200).sjson({
+                    success: true,
+                });
+            })
+            .catch((e)=>{
+                return res.status(200).sjson({
+                    success: false,
+                    error: e.errors
+                });
+            });
         } else {
-            const user = await User.update(
+            User.update(
                 { 
                     username: username,
                     password: password, 
@@ -90,13 +101,27 @@ const Register = async (req, res, flagNew) => {
                     updated: new Date(),
                 },
                 { where: { username: username}}
-            );
-            return res.status(200).send(`You have Updated Successfully`)
+            )
+            .then((result)=>{
+                return res.status(200).sjson({
+                    success: true,
+                });
+            })
+            .catch((e)=>{
+                return res.status(200).sjson({
+                    success: false,
+                    error: e.errors
+                });
+            });
+            
         }
         
     } catch (err) {
         console.log("err1 ", err.errors);
-        return res.status(500).json({error: err.errors[0]});
+        return res.status(500).json({
+            success: false,
+            error: err.errors
+        });
     }
 }
 
