@@ -46,3 +46,18 @@ insert into products_sales (facture_id, product_id, amount, total)
 	values (6, 1, 23, 12331);
 insert into products_sales (facture_id, product_id, amount, total) 
 	values (7, 1, 23, 12331);
+
+insert into products_sales (facture_id, product_id, amount, total) 
+	values (1, 2, 23, 12331);
+insert into products_sales (facture_id, product_id, amount, total) 
+	values (2, 2, 23, 234);
+insert into products_sales (facture_id, product_id, amount, total) 
+	values (3, 2, 23, 2344);
+insert into products_sales (facture_id, product_id, amount, total) 
+	values (4, 3, 15, 12331);
+insert into products_sales (facture_id, product_id, amount, total) 
+	values (5, 3, 23, 3433);
+insert into products_sales (facture_id, product_id, amount, total) 
+	values (6, 3, 23, 12331);
+insert into products_sales (facture_id, product_id, amount, total) 
+	values (7, 4, 23, 12331);
