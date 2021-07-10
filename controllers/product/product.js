@@ -87,6 +87,35 @@ const getByType = (type, req, res) => {
 };
 
 
+const getById = (id, req, res) => {
+    console.log('product by type: ', req.body);
+    try {
+        product.findAll({
+            where: { id: id }, 
+            //include: Department,
+        })
+        .then((result)=>{
+            return res.status(200).json({
+                success: true,
+                data: result,
+            });
+        })
+        .catch((e)=>{
+            return res.status(400).json({
+                success: false,
+                error: e,
+            });
+        });
+    } catch (err) {
+        console.log('product by type: ', err.message);
+        return res.status(500).json({
+            success: false,
+            error: err,
+        });
+    }
+};
+
+
 const save = (item, req, res) => {
     console.log('product save: ', item);
     try {
@@ -142,6 +171,7 @@ module.exports = {
     getAll: getAll,
     getAllSum: getAllSum,
     getByType: getByType,
+    getById: getById,
     save: save,
     update: update,  
 };

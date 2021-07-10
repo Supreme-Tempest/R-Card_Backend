@@ -23,6 +23,10 @@ router.get('/product/:product_type', function(req, res, next) {
     product.getByType(req.params.product_type, req, res);
 });
 
+router.get('/productid', (req, res, next) => {
+    product.getById(req.body.id, req, res);
+});
+
 router.post('/product', function(req, res, next) {
     data = {
         name: req.body.name,
