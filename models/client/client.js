@@ -14,15 +14,15 @@ const Client = sequelize.define('clients', {
     },
     dui: {
         allowNull: false,
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: {
+            args: true,
+            msg: { code: 40146, msg: 'DUI ya registrado' },
+        }
     },
     name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: {
-            args: true,
-            msg: { code: 40145, msg: 'client ya existe' },
-        }
     },
     creation_date: {
         allowNull: false,

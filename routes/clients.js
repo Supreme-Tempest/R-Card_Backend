@@ -19,8 +19,8 @@ router.post('/clients', function(req, res, next) {
         number_card: req.body.number_card,
         dui: req.body.dui,
         name: req.body.name,
-        creation_date: new Date(),
         birthday: req.body.birthday,
+        creation_date: new Date(),
         state: true,
     }
     console.log(data);
@@ -35,6 +35,14 @@ router.put('/clients', function(req, res, next) {
         state: true,
     }
     client.update(data, req, res);
+});
+
+router.put('/clientState', function(req, res, next) {
+    data = {
+        card: req.body.card,
+        state: req.body.state,
+    }
+    client.updateStatus(data, req, res);
 });
 
 router.get('/facture', function(req, res, next) {

@@ -38,7 +38,7 @@ const save = (item, req, res) => {
         })
         .catch((e)=>{
             return res.status(400).send(e);
-        })  ;
+        });
     } catch (err) {
         console.log('role save: ', err.message);
         return res.status(500).send(err);
