@@ -14,7 +14,7 @@ es el único lenguaje de programación que funciona en los navegadores de forma 
 Chart.js :
 es una biblioteca JavaScript gratuita de código abierto para la visualización de datos, que admite 8 tipos de gráficos: barra línea área circular burbuja radar polar dispersión. 
 
-PostgresSQL
+PostgresSQL:
 es un sistema de gestión de bases de datos relacionales (RDBMS) libre y de código abierto (Open Source) que hace énfasis en la extensibilidad y el cumplimiento de SQL.
 
 Pug :
