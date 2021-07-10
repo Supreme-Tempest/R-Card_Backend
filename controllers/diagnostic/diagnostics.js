@@ -61,12 +61,16 @@ const getProductSales = (req, res, flag) => {
     console.log('prodcutssales: ', req.body);
     try {
 
-        let query = `select p.product_id, sum(p.amount) as total 
-        from products_sales as p group by p.product_id
+        let query = `select p.product_id, pd.name, sum(p.amount) as total 
+        from products_sales as p, products as pd 
+        where p.product_id = pd.id
+        group by p.product_id, pd.name
         order by total desc fetch first 3 rows only;`;
         if (flag) {
-            query = `select p.product_id, sum(p.amount) as total 
-            from products_sales as p group by p.product_id
+            query = `select p.product_id, pd.name, sum(p.amount) as total 
+            from products_sales as p, products as pd 
+            where p.product_id = pd.id
+            group by p.product_id, pd.name
             order by total asc fetch first 3 rows only;`;
         }
 
