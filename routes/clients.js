@@ -19,8 +19,8 @@ router.post('/clients', function(req, res, next) {
         number_card: req.body.number_card,
         dui: req.body.dui,
         name: req.body.name,
-        creation_date: new Date(),
         birthday: req.body.birthday,
+        creation_date: new Date(),
         state: true,
     }
     console.log(data);

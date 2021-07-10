@@ -26,7 +26,7 @@ const getAll = (req, res) => {
         .catch((e)=>{
             return res.status(400).json({
                 success: false,
-                error: e,
+                error: e.errors
             });
         });
     } catch (err) {
@@ -43,15 +43,17 @@ const save = (item, req, res) => {
     try {
         client.create(item)
         .then((result)=>{
+            //console.log("funca", result);
             return res.status(200).json({
                 success: true,
                 data: result,
             });
         })
         .catch((e)=>{
+            console.log("error", e.errors);
             return res.status(400).json({
                 success: false,
-                error: e,
+                error: e.errors,
             });
         });
     } catch (err) {
@@ -76,7 +78,7 @@ const update = (item, req, res) => {
         .catch((e)=>{
             return res.status(400).json({
                 success: false,
-                error: e,
+                error: e.errors,
             });
         });
     } catch (err) {
@@ -101,7 +103,7 @@ const updateStatus = (item, req, res) => {
         .catch((e)=>{
             return res.status(400).json({
                 success: false,
-                error: e,
+                error: e.errors
             });
         });
     } catch (err) {
