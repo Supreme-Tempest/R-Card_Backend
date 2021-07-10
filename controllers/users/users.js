@@ -78,12 +78,12 @@ const Register = (req, res, flagNew) => {
                     updated: new Date(),
                 },
             ).then((result)=>{
-                return res.status(200).sjson({
+                return res.status(200).json({
                     success: true,
                 });
             })
             .catch((e)=>{
-                return res.status(200).sjson({
+                return res.status(200).json({
                     success: false,
                     error: e.errors
                 });
@@ -103,12 +103,12 @@ const Register = (req, res, flagNew) => {
                 { where: { username: username}}
             )
             .then((result)=>{
-                return res.status(200).sjson({
+                return res.status(200).json({
                     success: true,
                 });
             })
             .catch((e)=>{
-                return res.status(200).sjson({
+                return res.status(200).json({
                     success: false,
                     error: e.errors
                 });
